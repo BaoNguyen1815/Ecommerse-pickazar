@@ -4,20 +4,24 @@ import Category from './category.type';
 
 @Resolver()
 export class CategoryResolver {
-  private readonly items: Category[] = loadCategories();
+  private readonly items: Promise<Category[]> = loadCategories();
 
   @Query(() => [Category], { description: 'Get all the categories' })
   async categories(
     @Arg('type', type => String) type: string
   ): Promise<Category[]> {
-    return await this.items.filter(item => item.type === type);
+    let result= await this.items;
+    // console.log(result);
     // return await this.items;
+
+    return await result.filter(item => item.type === type);
   }
 
   @Query(() => Category)
   async category(
     @Arg('id', type => Int) id: number
   ): Promise<Category | undefined> {
-    return await this.items.find(item => item.id === id);
+    let result = await this.items;
+    return await result.find(item => item.id === id);
   }
 }
