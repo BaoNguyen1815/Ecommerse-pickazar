@@ -5,16 +5,18 @@ import AddCouponInput from './coupon.input_type';
 import search from '../../helpers/search';
 @Resolver()
 export default class CouponResolver {
-  private readonly couponsCollection: Coupon[] = loadCoupons();
+  private readonly couponsCollection: Promise<Coupon[]> = loadCoupons();
 
   @Query(returns => [Coupon], { description: 'Get All Coupons' })
   async coupons(
     @Arg('status', { nullable: true }) status?: string,
     @Arg('searchBy', { nullable: true }) searchBy?: string
   ): Promise<Coupon[] | undefined> {
-    let coupons = this.couponsCollection;
+    let coupons = await this.couponsCollection;
+    // console.log("coupons",coupons);
+
     if (status) {
-      coupons = coupons.filter(coupon => coupon.status === status);
+      coupons = await coupons.filter(coupon => coupon.status === status);
     }
     return await search(coupons, ['title', 'code'], searchBy);
   }

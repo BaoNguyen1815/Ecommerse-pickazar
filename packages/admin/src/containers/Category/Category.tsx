@@ -48,10 +48,14 @@ const Row = withStyle(Rows, () => ({
 }));
 
 const categorySelectOptions = [
-  { value: 'grocery', label: 'Grocery' },
-  { value: 'women-cloths', label: 'Women Cloth' },
-  { value: 'bags', label: 'Bags' },
-  { value: 'makeup', label: 'Makeup' },
+  { value: 'Thực phẩm', label: 'Thực phẩm' },
+  { value: 'Thực phẩm chức năng', label: 'Thực phẩm chức năng' },
+  { value: 'Mẹ và bé', label: 'Mẹ và bé' },
+  { value: 'Điện máy', label: 'Điện máy' },
+  { value: 'Homelife', label: 'Homelife' },
+  { value: 'Voucher & dịch vụ', label: 'Voucher & dịch vụ' },
+  { value: 'Hóa mỹ phẩm', label: 'Hóa mỹ phẩm' },
+  { value: 'Công nghệ kỹ thuật số', label: 'Công nghệ kỹ thuật số' },
 ];
 
 export default function Category() {

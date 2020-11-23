@@ -5,7 +5,9 @@ import CategoryInput from '../category/category.input_type';
 export default class AddProductInput implements Partial<Product> {
   @Field(type => ID)
   id: string;
-
+  
+  @Field(type => ID)
+  category_id: string;
   @Field()
   name: string;
 
@@ -21,8 +23,8 @@ export default class AddProductInput implements Partial<Product> {
   @Field({ defaultValue: '1' })
   unit: string;
 
-  @Field(type => [CategoryInput], { nullable: true })
-  categories: CategoryInput[];
+  @Field(type => CategoryInput, { nullable: true })
+  sub_category: CategoryInput;
 
   @Field(type => Int)
   price: number;

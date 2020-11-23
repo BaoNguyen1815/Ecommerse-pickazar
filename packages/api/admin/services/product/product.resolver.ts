@@ -9,21 +9,21 @@ import shuffle from '../../helpers/shuffle';
 import { sortByHighestNumber, sortByLowestNumber } from '../../helpers/sorts';
 @Resolver()
 export default class ProductResolver {
-  private readonly productsCollection: Product[] = loadProducts();
+  private readonly productsCollection: Promise<Product[]> = loadProducts();
 
   @Query((returns) => Products, { description: 'Get all the products' })
   async products(
     @Args()
     { limit, offset, sortByPrice, type, searchText, category }: GetProductsArgs
   ): Promise<Products> {
-    let products = this.productsCollection;
-    if (category) {
-      products = products.filter((product) =>
-        product.categories.find(
-          (category_item) => category_item.slug === category
-        )
-      );
-    }
+    let products = await this.productsCollection;
+    // if (category) {
+    //   products = products.filter((product) =>
+    //     product.sub_category.find(
+    //       (category_item) => category_item.slug === category
+    //     )
+    //   );
+    // }
     if (type) {
       products = products.filter((product) => product.type === type);
     }
@@ -41,20 +41,21 @@ export default class ProductResolver {
     // return await products.slice(0, limit);
     products = await search(products, ['name'], searchText);
     const hasMore = products.length > offset + limit;
-
+    let product = await this.productsCollection;
     return {
       items: products.slice(offset, offset + limit),
-      totalCount: this.productsCollection.length,
+      totalCount: product.length,
       hasMore,
     };
   }
 
   @Query(() => Product)
   async product(@Arg('slug') slug: string): Promise<Product | undefined> {
-    return await this.productsCollection.find((item) => item.slug === slug);
+    let product = await this.productsCollection;
+    return product.find((item) => item.slug === slug);
   }
 
-  @Mutation(() => Product, { description: 'Create Category' })
+  @Mutation(() => Product, { description: 'Create Product' })
   async createProduct(
     @Arg('product') product: AddProductInput
   ): Promise<Product> {

@@ -5,14 +5,15 @@ import AddCategoryInput from './category.input_type';
 import search from '../../helpers/search';
 @Resolver()
 export default class CategoryResolver {
-  private readonly categoriesCollection: Category[] = loadCategories();
+  private readonly categoriesCollection: Promise<Category[]> = loadCategories();
 
   @Query(returns => [Category], { description: 'Get all the categories' })
   async categories(
     @Arg('type', { nullable: true }) type?: string,
     @Arg('searchBy', { defaultValue: '' }) searchBy?: string
   ): Promise<Category[]> {
-    let categories = this.categoriesCollection;
+    let categories =await this.categoriesCollection;
+    console.log("jhgfd",categories)
       
     if (type) {
       categories = await categories.filter(category => category.type === type);
@@ -24,7 +25,8 @@ export default class CategoryResolver {
   async category(
     @Arg('id', type => ID) id: string
   ): Promise<Category | undefined> {
-    return await this.categoriesCollection.find(category => category.id === id);
+    let categories = await this.categoriesCollection;
+     return categories.find(category => category.id === id)
   }
 
   @Mutation(() => Category, { description: 'Create Category' })

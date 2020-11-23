@@ -1,8 +1,7 @@
 import { Field, ID, ObjectType } from 'type-graphql';
-import CategoryParent from './category_parent.type';
 
 @ObjectType()
-export default class Category {
+export default class CategoryParent {
   @Field(type => ID)
   id: string;
 
@@ -15,15 +14,9 @@ export default class Category {
   @Field({ nullable: true })
   icon: string;
 
-  @Field(type => CategoryParent)
-  category: CategoryParent;
-
   @Field( { nullable: true })
   slug: string;
-  // You should resolve this field by using @FieldResolver decorator within your Category Resolver Class.
-  @Field({ defaultValue: 0 })
-  number_of_product?: number;
-
+  
   @Field({ nullable: true })
   creation_date: Date;
 }

@@ -9,6 +9,7 @@ const loadOrders =  () : Promise<Order[]> =>  {
       model: db.products
     }]
   }).then((orders : [Order]) => {
+    // console.log("OKE",orders[0].products)
     const tmp = orders.map((order)=>{
       const jsonAddress = JSON.parse(order.delivery_address);
       const delivery_address = jsonAddress.address +", "+jsonAddress.city + ", " + jsonAddress.country;
@@ -42,6 +43,7 @@ const loadOrders =  () : Promise<Order[]> =>  {
     
     return tmp;
   })
+  
 }
 
 
