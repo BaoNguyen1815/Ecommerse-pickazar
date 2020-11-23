@@ -1,6 +1,6 @@
 module.exports = function (sequelize: any, DataTypes: any) {
 
-const products = sequelize.define("products", {
+const products = sequelize.define("ordered_products", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,

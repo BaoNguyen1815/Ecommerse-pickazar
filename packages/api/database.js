@@ -16,7 +16,7 @@ const sequelize = new Sequelize(
           freezeTableName: true,
       },
       pool: {
-          max: 5,
+          max: 10,
           min: 0,
           acquire: 30000,
           idle: 10000,
@@ -25,10 +25,12 @@ const sequelize = new Sequelize(
 )
 
 let models = [
-    require('./admin/models/orders'),
-    require('./admin/models/product'),
-    require('./admin/models/orderDetail'),
-   
+    require('./admin/models/order/orders'),
+    require('./admin/models/order/ordered_products'),
+    require('./admin/models/order/orderDetail'),
+    require('./admin/models/customer/customers'),
+    require('./admin/models/customer/addresses'),
+    require('./admin/models/customer/contacts'),
 ]
 
 models.forEach(model => {
@@ -36,7 +38,12 @@ models.forEach(model => {
     db[seqModel.name] = seqModel
 })
 
-db.orders.belongsToMany(db.products,{through: db.order_details,foreignKey: 'order_id', otherKey: 'product_id'});
+
+
+db.orders.belongsToMany(db.ordered_products, {as: 'products',through: db.order_details,foreignKey: 'order_id', otherKey: 'product_id'});
+db.customers.hasMany(db.addresses,{foreignKey: 'customer_id'});
+db.customers.hasMany(db.orders, {foreignKey: 'customer_id'} )
+db.customers.hasMany(db.contacts, {foreignKey: 'customer_id'} )
 
 Object.keys(db).forEach(key => {
     if ('associate' in db[key]) {

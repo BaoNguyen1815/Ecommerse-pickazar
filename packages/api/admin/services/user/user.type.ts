@@ -11,23 +11,23 @@ export default class User {
   @Field()
   name: string;
 
-  @Field()
+  @Field({nullable: true})
   image: string;
 
   @Field()
   email: string;
 
-  @Field(type => [Address])
+  @Field(type => [Address],{nullable: true})
   addresses: Address[];
 
-  @Field(type => [Contact])
+  @Field(type => [Contact],{nullable: true})
   contacts: Contact[];
 
-  @Field(type => [Card])
+  @Field(type => [Card],{nullable: true})
   card: Card[];
 
   password: string;
 
-  @Field()
+  @Field({nullable: true})
   creation_date: Date;
 }
