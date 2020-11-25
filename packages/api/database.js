@@ -17,15 +17,18 @@ const sequelize = new Sequelize('pickbazar', 'root', '', {
 });
 
 let models = [
-  require('./admin/models/orders'),
-  // require('./admin/models/product'),
-  require('./admin/models/orderDetail'),
-  require('./admin/models/orders'),
   require('./admin/models/coupons'),
   require('./admin/models/category/category_parent'),
   require('./admin/models/category/sub_category'),
   require('./admin/models/category/sub_sub_categories'),
   require('./admin/models/product/products'),
+
+  require('./admin/models/order/orders'),
+  require('./admin/models/order/ordered_products'),
+  require('./admin/models/order/orderDetail'),
+  require('./admin/models/customer/customers'),
+  require('./admin/models/customer/addresses'),
+  require('./admin/models/customer/contacts'),
 ];
 
 models.forEach((model) => {
@@ -33,16 +36,18 @@ models.forEach((model) => {
   db[seqModel.name] = seqModel;
 });
 
-db.orders.belongsToMany(db.products, {
+db.products.belongsTo(db.sub_categories, { foreignKey: 'subcategory_id' });
+db.sub_categories.belongsTo(db.categories, { foreignKey: 'category_id' });
+
+db.orders.belongsToMany(db.ordered_products, {
+  as: 'products',
   through: db.order_details,
   foreignKey: 'order_id',
   otherKey: 'product_id',
 });
-
-db.sub_categories.belongsTo(db.categories, { foreignKey: 'category_id' });
-// db.sub_categories.hasMany(db.sub_sub_categories, { foreignKey: 'sub_category_id' });
-
-db.products.belongsTo(db.sub_categories, { foreignKey: 'subcategory_id' });
+db.customers.hasMany(db.addresses, { foreignKey: 'customer_id' });
+db.customers.hasMany(db.orders, { foreignKey: 'customer_id' });
+db.customers.hasMany(db.contacts, { foreignKey: 'customer_id' });
 
 Object.keys(db).forEach((key) => {
   if ('associate' in db[key]) {
@@ -52,5 +57,4 @@ Object.keys(db).forEach((key) => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
 module.exports = db;

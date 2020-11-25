@@ -48,7 +48,7 @@ const options = [
   { value: 'grocery', name: 'Grocery', id: '1' },
   { value: 'women-cloths', name: 'Women Cloths', id: '2' },
   { value: 'bags', name: 'Bags', id: '3' },
-  { value: 'makeup', name: 'Makeup', id: '4' },
+  { value: 'Mỹ phẩm', name: 'Mỹ phẩm', id: '9' },
 ];
 type Props = any;
 

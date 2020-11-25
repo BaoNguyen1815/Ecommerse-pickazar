@@ -1,6 +1,18 @@
 import Category from '../services/category/category.type';
-import { plainToClass } from 'class-transformer';
 const db = require('../../database')
+
+// const resolvers = {
+//   Mutation: {
+//     createProduct: async (root,args,context,info) => {
+//       c = await db.products.create({
+//         name: args.name,
+//         color: args.color,
+//         price: args.price,
+//       });
+//       return product.id;
+//     }
+//   }
+// }
 const loadCategories = (): Promise<Category[]> => {
   return db.sub_categories.findAll(
     {

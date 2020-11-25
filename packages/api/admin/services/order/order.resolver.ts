@@ -16,18 +16,6 @@ export default class OrderResolver {
     @Arg("searchText", type => String, { defaultValue: "" }) searchText: string
   ): Promise<Order[] | undefined> {
     let orders = await  this.ordersCollection;
-    console.log(orders);
-    // console.log (orders.map(order => {
-    //   return order.products.map(product=>{
-    //     return{
-    //       id:product.id,
-    //       title:product.title,
-    //       weight:product.weight,
-    //       price:product.price,
-    //     }
-    //   });
-    // }))
-    
     if (status) {
       orders = await orders.filter(order => order.status === status);
 

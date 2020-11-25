@@ -3,6 +3,8 @@ import loadCategories from '../../data/category.data';
 import Category from './category.type';
 import AddCategoryInput from './category.input_type';
 import search from '../../helpers/search';
+const db = require('../../../database')
+
 @Resolver()
 export default class CategoryResolver {
   private readonly categoriesCollection: Promise<Category[]> = loadCategories();
@@ -13,7 +15,7 @@ export default class CategoryResolver {
     @Arg('searchBy', { defaultValue: '' }) searchBy?: string
   ): Promise<Category[]> {
     let categories =await this.categoriesCollection;
-    console.log("jhgfd",categories)
+    // console.log("jhgfd",categories)
       
     if (type) {
       categories = await categories.filter(category => category.type === type);
@@ -34,7 +36,7 @@ export default class CategoryResolver {
     @Arg('category') category: AddCategoryInput
   ): Promise<Category> {
     console.log(category, 'category');
-
+    // db.sub_categories.create({name : 'thoi trang'});
     return await category;
   }
 }
