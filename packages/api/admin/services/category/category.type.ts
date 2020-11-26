@@ -21,8 +21,8 @@ export default class Category {
   @Field( { nullable: true })
   slug: string;
   // You should resolve this field by using @FieldResolver decorator within your Category Resolver Class.
-  @Field({ defaultValue: 0 })
-  number_of_product?: number;
+  // @Field({ defaultValue: 0 })
+  // number_of_product?: number;
 
   @Field({ nullable: true })
   creation_date: Date;

@@ -14,6 +14,9 @@ export default class AddCategoryInput implements Partial<Category> {
 
   @Field({ defaultValue: null })
   type: string;
+   
+  @Field(type => ID,{ nullable: true })
+  category_id: string;
 
   @Field({ nullable: true })
   icon: string;

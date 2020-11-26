@@ -17,7 +17,7 @@ const loadCategories = (): Promise<Category[]> => {
   return db.sub_categories.findAll(
     {
       include: [{
-        model: db.categories,
+        model: db.category,
         // as : 'children',
         // required: true
       }]

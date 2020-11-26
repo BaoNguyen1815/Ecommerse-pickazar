@@ -7,6 +7,8 @@ import AddProductInput from './product.input_type';
 import search from '../../helpers/search';
 import shuffle from '../../helpers/shuffle';
 import { sortByHighestNumber, sortByLowestNumber } from '../../helpers/sorts';
+const db =require('../../../database.js')
+
 @Resolver()
 export default class ProductResolver {
   private readonly productsCollection: Promise<Product[]> = loadProducts();
@@ -16,7 +18,7 @@ export default class ProductResolver {
     @Args()
     { limit, offset, sortByPrice, type, searchText, category }: GetProductsArgs
   ): Promise<Products> {
-    let products = await this.productsCollection;
+    let products = await loadProducts();
     // if (category) {
     //   products = products.filter((product) =>
     //     product.sub_category.find(
@@ -59,6 +61,7 @@ export default class ProductResolver {
   async createProduct(
     @Arg('product') product: AddProductInput
   ): Promise<Product> {
+    await db.products.create(product)
     console.log(product, 'product');
 
     return product;

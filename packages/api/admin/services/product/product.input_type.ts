@@ -1,13 +1,18 @@
 import { InputType, Field, ID, Int, Float } from 'type-graphql';
 import Product from './product.type';
 import CategoryInput from '../category/category.input_type';
+import CategoryParentInput from '../category/category_parent.input.type';
 @InputType({ description: 'New recipe data' })
 export default class AddProductInput implements Partial<Product> {
   @Field(type => ID)
   id: string;
-  
-  @Field(type => ID)
+
+  @Field(type => ID,{ nullable: true })
   category_id: string;
+
+  @Field(type => ID,{ nullable: true })
+  subcategory_id: string;
+
   @Field()
   name: string;
 
@@ -22,6 +27,9 @@ export default class AddProductInput implements Partial<Product> {
 
   @Field({ defaultValue: '1' })
   unit: string;
+
+  @Field(type => CategoryParentInput, { nullable: true })
+  category_parent: CategoryParentInput;
 
   @Field(type => CategoryInput, { nullable: true })
   sub_category: CategoryInput;

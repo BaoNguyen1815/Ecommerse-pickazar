@@ -14,7 +14,7 @@ export default class CategoryResolver {
     @Arg('type', { nullable: true }) type?: string,
     @Arg('searchBy', { defaultValue: '' }) searchBy?: string
   ): Promise<Category[]> {
-    let categories =await this.categoriesCollection;
+    let categories =await loadCategories();
     // console.log("jhgfd",categories)
       
     if (type) {
@@ -35,8 +35,8 @@ export default class CategoryResolver {
   async createCategory(
     @Arg('category') category: AddCategoryInput
   ): Promise<Category> {
+    const addCate = await db.sub_categories.create(category);
     console.log(category, 'category');
-    // db.sub_categories.create({name : 'thoi trang'});
     return await category;
   }
 }

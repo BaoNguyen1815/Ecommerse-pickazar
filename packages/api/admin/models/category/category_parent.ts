@@ -1,6 +1,6 @@
 
 module.exports = function(sequelize: any, DataTypes: any){
-    return sequelize.define('categories',{
+    return sequelize.define('category',{
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,

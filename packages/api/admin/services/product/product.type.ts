@@ -1,5 +1,6 @@
 import { Field, ID, Int, Float, ObjectType } from 'type-graphql';
 import Category from '../category/category.type';
+import CategoryParent from '../category/category_parent.type';
 
 @ObjectType()
 export default class Product {
@@ -20,6 +21,9 @@ export default class Product {
 
   @Field({ nullable: true })
   unit: string;
+
+  @Field(type => CategoryParent)
+  category_parent: CategoryParent;
 
   @Field(type => Category)
   sub_category: Category;

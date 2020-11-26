@@ -24,6 +24,7 @@ export class ProductResolver {
       type,
       category
     );
+    // console.log(filteredData)
     return new ProductResponse({
       total: total,
       ...filteredData,

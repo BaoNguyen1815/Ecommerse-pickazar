@@ -17,11 +17,14 @@ module.exports = function(sequelize: any, DataTypes: any){
             type: DataTypes.INTEGER,
             field : 'discount',
           },
-        //   category: {
-
-        //   },
+          category: {
+            type : DataTypes.STRING
+          },
           code: {
             type: DataTypes.STRING,
+          },
+          min_amount : {
+            type: DataTypes.INTEGER,
           },
           status: {
             type: DataTypes.STRING,
@@ -34,10 +37,6 @@ module.exports = function(sequelize: any, DataTypes: any){
             type: DataTypes.STRING,
             allowNull: true,
             field : "end_date",
-            // get() {
-            //     const rawValue = this.getDataValue('expiration_date');
-            //     return  rawValue.toLocaleDateString("en-US");
-            //   }
           }
 
     },{

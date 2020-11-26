@@ -38,7 +38,7 @@ module.exports = function(sequelize: any, DataTypes: any){
           quantity: {
               type : DataTypes.INTEGER,
               // allowNull: true,
-              field :'unit_price'
+              field :'earn_point'
           },
           // salePrice: {
           //   type: DataTypes.INTEGER,

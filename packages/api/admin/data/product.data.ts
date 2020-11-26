@@ -6,8 +6,14 @@ const loadProducts = (): Promise<Product[]> => {
   return db.products.findAll({
     include : [{
       model : db.sub_categories,
-      // raw: true
-    }]
+      raw: true
+    },
+      {
+        model : db.category,
+        as:'category_parent',
+        raw: true
+      }
+  ]
   })
   
   .then((products : [Product]) => {
@@ -28,6 +34,11 @@ const loadProducts = (): Promise<Product[]> => {
         description: product.description,
         creation_date: product.creation_date,
         slug: product.slug,
+        type : product.category_parent.name,
+        category_parent : {
+          id: product.category_parent.id,
+          name: product.category_parent.name
+        },
         categories:  {
           id: product.sub_category.id,
           name: product.sub_category.name
@@ -35,7 +46,7 @@ const loadProducts = (): Promise<Product[]> => {
         
       }
     })
-    // console.log(tmp[0])
+    console.log(tmp[0].category_parent)
     return tmp;
   })
 }

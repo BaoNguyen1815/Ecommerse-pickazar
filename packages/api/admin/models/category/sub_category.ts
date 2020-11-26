@@ -10,6 +10,9 @@ module.exports = function(sequelize: any, DataTypes: any){
             type: DataTypes.STRING,
             field: 'name',
           },
+          category_id :{
+            type: DataTypes.INTEGER,
+          },
           // type: {
           //   type: DataTypes.STRING,
             

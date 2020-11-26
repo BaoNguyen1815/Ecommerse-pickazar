@@ -37,7 +37,11 @@ models.forEach((model) => {
 });
 
 db.products.belongsTo(db.sub_categories, { foreignKey: 'subcategory_id' });
-db.sub_categories.belongsTo(db.categories, { foreignKey: 'category_id' });
+db.products.belongsTo(db.category, {
+  as: 'category_parent',
+  foreignKey: 'category_id',
+});
+db.sub_categories.belongsTo(db.category, { foreignKey: 'category_id' });
 
 db.orders.belongsToMany(db.ordered_products, {
   as: 'products',
