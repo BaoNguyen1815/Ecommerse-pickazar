@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 var db = {};
 
-const sequelize = new Sequelize('store', 'root', '', {
+const sequelize = new Sequelize('ecommerce', 'root', '', {
   host: 'localhost',
   port: '3306',
   dialect: 'mysql',

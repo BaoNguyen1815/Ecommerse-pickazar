@@ -14,7 +14,7 @@ module.exports = function (sequelize: any, DataTypes: any) {
         name:{
             type: DataTypes.STRING,
             allowNull: true,
-            field:"name",
+            field:"title",
         },
         info:{
             type : DataTypes.STRING,

@@ -18,7 +18,7 @@ module.exports = function (sequelize: any, DataTypes: any) {
         },
         
     },{
-        tableName: "contact",
+        tableName: "contacts",
         freezeTableName: true,
         timestamps: false,
     })
