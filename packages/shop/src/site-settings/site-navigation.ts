@@ -87,7 +87,7 @@ export const CATEGORY_MENU_ITEMS = [
   {
     id: 'nav.grocery',
     href: GROCERY_PAGE,
-    defaultMessage: 'Grocery',
+    defaultMessage: 'grocery',
     icon: 'FruitsVegetable',
     dynamic: true,
   },

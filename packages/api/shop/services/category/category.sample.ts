@@ -6,14 +6,19 @@ const loadCategories = (): Promise<Category[]> =>{
     let result = db.sub_categories.findAll({
         include: [{
             model : db.sub_sub_categories
+        },{
+            model : db.categories
         }]
     }).then((categories : [Category])=>{
         const list = categories.map((item : any )=>{
-            // console.log(item.sub_sub_categories);
+            // console.log(item.category.slug);
+            // let data =item.categories
+            // console.log(data);
+            let infortype = item.category.slug;
             return{
                 id: item.id,
                 title: item.title,
-                type:item.type,
+                type:infortype,
                 slug: item.slug,
                 icon: item.icon,
                 children: item.sub_sub_categories.map((ssCategory : any )=>{
@@ -22,12 +27,12 @@ const loadCategories = (): Promise<Category[]> =>{
                         title: ssCategory.title,
                         slug: ssCategory.slug,
                         // products: [],
-                        type: ssCategory.type,
+                        type: infortype,
                     }
                 })
             }
         })
-        // console.log(list);
+        // console.log(list[0].children);
         return list;
     })
 // console.log(result);

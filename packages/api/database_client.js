@@ -21,7 +21,7 @@ let models = [
   //   require('./admin/models/orders'),
   //   require('./admin/models/product'),
   //   require('./admin/models/orderDetail'),
-  // require('./shop/models/categories'),
+  require('./shop/models/categories'),
   require('./shop/models/subCategories'),
   require('./shop/models/subsubCategories'),
   require('./shop/models/orders'),
@@ -40,12 +40,18 @@ db.orders.belongsToMany(db.products, {
   otherKey: 'product_id',
 });
 db.orders.hasMany(db.order_details, { foreignKey: 'order_id' });
-// db.order_details.belongsTo(db.products,{foreignKey: 'product_id'})
 db.products.hasOne(db.order_details, { foreignKey: 'product_id' });
 
+db.categories.belongsToMany(db.sub_sub_categories, {
+  through: db.sub_categories,
+  foreignKey: 'category_id',
+  otherKey: 'id',
+});
 db.sub_categories.hasMany(db.sub_sub_categories, {
   foreignKey: 'sub_category_id',
 });
+// db.categories.hasMany(db.sub_categories,{foreignKey: 'category_id'})
+db.sub_categories.belongsTo(db.categories, { foreignKey: 'category_id' });
 Object.keys(db).forEach((key) => {
   if ('associate' in db[key]) {
     db[key].associate(db);
