@@ -18,12 +18,15 @@ const sequelize = new Sequelize('store', 'root', '', {
 });
 
 let models = [
-  require('./admin/models/orders'),
-  require('./admin/models/product'),
-  require('./admin/models/orderDetail'),
+  //   require('./admin/models/orders'),
+  //   require('./admin/models/product'),
+  //   require('./admin/models/orderDetail'),
   // require('./shop/models/categories'),
   require('./shop/models/subCategories'),
   require('./shop/models/subsubCategories'),
+  require('./shop/models/orders'),
+  require('./shop/models/order_detail'),
+  require('./shop/models/products'),
 ];
 
 models.forEach((model) => {
@@ -36,6 +39,10 @@ db.orders.belongsToMany(db.products, {
   foreignKey: 'order_id',
   otherKey: 'product_id',
 });
+db.orders.hasMany(db.order_details, { foreignKey: 'order_id' });
+// db.order_details.belongsTo(db.products,{foreignKey: 'product_id'})
+db.products.hasOne(db.order_details, { foreignKey: 'product_id' });
+
 db.sub_categories.hasMany(db.sub_sub_categories, {
   foreignKey: 'sub_category_id',
 });

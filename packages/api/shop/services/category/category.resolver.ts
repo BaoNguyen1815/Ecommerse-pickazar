@@ -13,7 +13,6 @@ export class CategoryResolver {
     let result= await this.items;
     // console.log(result);
     // return await this.items;
-
     return await result.filter(item => item.type === type);
   }
 

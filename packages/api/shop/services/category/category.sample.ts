@@ -1,6 +1,6 @@
 import Category from './category.type';
 import { plainToClass } from 'class-transformer';
-const db= require('../../../database')
+const db= require('../../../database_client')
 
 const loadCategories = (): Promise<Category[]> =>{
     let result = db.sub_categories.findAll({
@@ -8,14 +8,15 @@ const loadCategories = (): Promise<Category[]> =>{
             model : db.sub_sub_categories
         }]
     }).then((categories : [Category])=>{
-        const list = categories.map((item)=>{
+        const list = categories.map((item : any )=>{
+            // console.log(item.sub_sub_categories);
             return{
                 id: item.id,
                 title: item.title,
                 type:item.type,
                 slug: item.slug,
                 icon: item.icon,
-                children: item.children?.map(ssCategory=>{
+                children: item.sub_sub_categories.map((ssCategory : any )=>{
                     return{
                         id: ssCategory.id,
                         title: ssCategory.title,
@@ -26,9 +27,10 @@ const loadCategories = (): Promise<Category[]> =>{
                 })
             }
         })
+        // console.log(list);
         return list;
     })
-
+// console.log(result);
 return result;
 }
 // data Mockup
