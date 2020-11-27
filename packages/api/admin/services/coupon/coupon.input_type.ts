@@ -32,7 +32,7 @@ export default class AddCouponInput implements Partial<Coupon> {
   status: string;
 
   @Field({ nullable: true })
-  expiration_date?: Date;
+  expiration_date?: string;
 
   @Field({ nullable: true })
   description?: string;

@@ -91,10 +91,14 @@ const GET_PRODUCTS = gql`
 `;
 
 const typeSelectOptions = [
-  { value: 'grocery', label: 'Grocery' },
-  { value: 'women-cloths', label: 'Women Cloths' },
-  { value: 'bags', label: 'Bags' },
-  { value: 'makeup', label: 'Makeup' },
+  { value: 'Thực phẩm', label: 'Thực phẩm' },
+  { value: 'Thực phẩm chức năng', label: 'Thực phẩm chức năng' },
+  { value: 'Hóa mỹ phẩm', label: 'Hóa mỹ phẩm' },
+  { value: 'Mẹ và bé', label: 'Mẹ và bé' },
+  { value: 'Điện máy', label: 'Điện máy' },
+  { value: 'Homelife', label: 'Homelife' },
+  { value: 'Voucher & dịch vụ', label: 'Voucher & dịch vụ' },
+  { value: 'Công nghệ kỹ thuật số', label: 'Công nghệ kỹ thuật số' },
 ];
 const priceSelectOptions = [
   { value: 'highestToLowest', label: 'Highest To Lowest' },

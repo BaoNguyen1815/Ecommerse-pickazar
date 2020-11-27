@@ -3,18 +3,22 @@ import loadCoupons from '../../data/coupon.data';
 import Coupon from './coupon.type';
 import AddCouponInput from './coupon.input_type';
 import search from '../../helpers/search';
+
+const db = require('../../../database.js')
 @Resolver()
 export default class CouponResolver {
-  private readonly couponsCollection: Coupon[] = loadCoupons();
+  private readonly couponsCollection: Promise<Coupon[]> = loadCoupons();
 
   @Query(returns => [Coupon], { description: 'Get All Coupons' })
   async coupons(
     @Arg('status', { nullable: true }) status?: string,
     @Arg('searchBy', { nullable: true }) searchBy?: string
   ): Promise<Coupon[] | undefined> {
-    let coupons = this.couponsCollection;
+    let coupons = await  loadCoupons();
+    // console.log("coupons",coupons);
+
     if (status) {
-      coupons = coupons.filter(coupon => coupon.status === status);
+      coupons = await coupons.filter(coupon => coupon.status === status);
     }
     return await search(coupons, ['title', 'code'], searchBy);
   }
@@ -23,6 +27,7 @@ export default class CouponResolver {
   async createCoupon(
     @Arg('coupon') coupon: AddCouponInput
   ): Promise<Coupon | undefined> {
+    const add = await db.coupons.create(coupon)
     console.log(coupon, 'coupon');
 
     return await coupon;
