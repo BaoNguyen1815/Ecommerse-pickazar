@@ -31,6 +31,7 @@ let models = [
     require('./admin/models/customer/customers'),
     require('./admin/models/customer/addresses'),
     require('./admin/models/customer/contacts'),
+    require('./admin/models/staff/staffs')
 ]
 
 models.forEach(model => {
@@ -44,6 +45,7 @@ db.orders.belongsToMany(db.ordered_products, {as: 'products',through: db.order_d
 db.customers.hasMany(db.addresses,{foreignKey: 'customer_id'});
 db.customers.hasMany(db.orders, {foreignKey: 'customer_id'} )
 db.customers.hasMany(db.contacts, {foreignKey: 'customer_id'} )
+db.staffs.hasMany(db.contacts, {foreignKey: 'customer_id'} )
 
 Object.keys(db).forEach(key => {
     if ('associate' in db[key]) {

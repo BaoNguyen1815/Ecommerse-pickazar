@@ -1,9 +1,10 @@
 import Customer from "../services/customer/customer.type";
+import moment from 'moment'
 const db = require('../../database');
 const loadCustomers = (): Promise<Customer[]> => {
   const customers = db.customers.findAll({
     where: {
-      userType: 'customer'
+      userType: 'customer',
     },
     include: [{
       model: db.addresses,
@@ -31,6 +32,7 @@ const loadCustomers = (): Promise<Customer[]> => {
         email: customer.email,
         total_order: total_order,
         total_order_amount: total_order_amount,
+        creation_date: moment(customer.creationDate,"DD MMM YYYY").toDate() ,
         addresses: customer.addresses.map((address: any) => (
           {
             id: address.id,
@@ -51,9 +53,9 @@ const loadCustomers = (): Promise<Customer[]> => {
         })),
       }
     })
-    console.log(returnData[0])
     return returnData;
   });
+  
   return customers;
 }
 //   return plainToClass(Customer, [

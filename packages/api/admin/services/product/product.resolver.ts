@@ -37,7 +37,6 @@ export default class ProductResolver {
     } else {
       products = shuffle(products);
     }
-
     // return await products.slice(0, limit);
     products = await search(products, ['name'], searchText);
     const hasMore = products.length > offset + limit;
@@ -58,6 +57,7 @@ export default class ProductResolver {
   async createProduct(
     @Arg('product') product: AddProductInput
   ): Promise<Product> {
+    
     console.log(product, 'product');
 
     return product;

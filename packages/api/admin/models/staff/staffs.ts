@@ -1,11 +1,11 @@
 module.exports = function (sequelize: any, DataTypes: any) {
-    const customer = sequelize.define('customers', {
+    const customer = sequelize.define('staffs', {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
         },
-        userType: {
+        role: {
             type: DataTypes.STRING,
             allowNull: false,
 
@@ -17,18 +17,12 @@ module.exports = function (sequelize: any, DataTypes: any) {
 
             field: "name",
         },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: false,
-
-            field: "avatar",
-        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             field: "email",
         },
-        creationDate: {
+        creation_date: {
             type: DataTypes.STRING,
             allowNull: false,
             field: "email_verified_at",

@@ -24,10 +24,17 @@ export class ProductResolver {
       type,
       category
     );
-    return new ProductResponse({
+    console.log(new ProductResponse({
+      total: total,
+      ...filteredData,
+    }))
+
+    const s = new ProductResponse({
       total: total,
       ...filteredData,
     });
+    console.log(s)
+    return s;
   }
 
   @Query(() => Product)
