@@ -23,7 +23,7 @@ const loadOrders = () : Promise<Order[]>  =>{
             return {
                 id: order.id,
                 userId: order.userId,
-                deliveryTime : null,
+                deliveryTime : order.deliveryTime,
                 amount : order.amount,
                 date : order.date,
                 deliveryAddress: delivery_address,
@@ -50,7 +50,7 @@ const loadOrders = () : Promise<Order[]>  =>{
                 })
             }
         });
-        console.log(result[0]);
+        // console.log(result[0]);
         return result;
     })
     return result_orders;

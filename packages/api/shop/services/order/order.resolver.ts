@@ -16,7 +16,7 @@ export class OrderResolver {
   ): Promise<Order[]> {
     let items = await this.items;
     // console.log(items);
-    
+    // let userid = 17
     // return await take(this.items.filter(item => item.userId === user), limit);
     return await filterOrder(items, user, limit, text);
   }
