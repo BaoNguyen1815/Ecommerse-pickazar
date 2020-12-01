@@ -22,16 +22,16 @@ import {
 } from '../DrawerItems/DrawerItems.style';
 
 const options = [
-  { value: 'Fruits & Vegetables', name: 'Fruits & Vegetables', id: '1' },
-  { value: 'Meat & Fish', name: 'Meat & Fish', id: '2' },
-  { value: 'Purse', name: 'Purse', id: '3' },
-  { value: 'Hand bags', name: 'Hand bags', id: '4' },
-  { value: 'Shoulder bags', name: 'Shoulder bags', id: '5' },
-  { value: 'Wallet', name: 'Wallet', id: '6' },
-  { value: 'Laptop bags', name: 'Laptop bags', id: '7' },
-  { value: 'Women Dress', name: 'Women Dress', id: '8' },
-  { value: 'Outer Wear', name: 'Outer Wear', id: '9' },
-  { value: 'Pants', name: 'Pants', id: '10' },
+  { value: 'Thực phẩm đông lạnh', name: 'Thực phẩm đông lạnh', id: '13' },
+  { value: 'Thực phẩm tươi sống', name: 'Thực phẩm tươi sống', id: '14' },
+  { value: 'TPCN hỗ trợ sức khỏe làm đẹp', name: 'TPCN hỗ trợ sức khỏe làm đẹp', id: '19' },
+  { value: 'TPCN hỗ trợ điều trị bệnh', name: 'TPCN hỗ trợ điều trị bệnh', id: '20' },
+  { value: 'Mỹ phẩm cho mẹ & bé', name: 'Mỹ phẩm cho mẹ & bé', id: '23' },
+  { value: 'Giấy, bông cho mẹ & bé', name: 'Giấy, bông cho mẹ & bé', id: '6' },
+  { value: 'Điện gia dụng', name: 'Điện gia dụng', id: '27' },
+  { value: 'Văn phòng phẩm', name: 'Văn phòng phẩm', id: '28' },
+  { value: 'Đồ dùng gia đình', name: 'Đồ dùng gia đình', id: '32' },
+  { value: 'Sách điện tử - Ebook', name: 'Sách điện tử - Ebook', id: '34' },
 ];
 
 const typeOptions = [

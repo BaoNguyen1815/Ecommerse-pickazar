@@ -48,10 +48,14 @@ const CREATE_COUPON = gql`
 `;
 
 const options = [
-  { value: 'grocery', name: 'Grocery', id: '1' },
-  { value: 'women-cloths', name: 'Women Cloths', id: '2' },
-  { value: 'bags', name: 'Bags', id: '3' },
-  { value: 'makeup', name: 'Makeup', id: '4' },
+  { value: 'Thực phẩm', name: 'Thực phẩm', id: '1' },
+  { value: 'Thực phẩm chức năng', name: 'Thực phẩm chức năng', id: '2' },
+  { value: 'Hóa mỹ phẩm', name: 'Hóa mỹ phẩm', id: '3' },
+  { value: 'Mẹ và bé', name: 'Mẹ và bé', id: '4' },
+  { value: 'Điện máy', name: 'Điện máy', id: '5' },
+  { value: 'Homelife', name: 'Homelife', id: '6' },
+  { value: 'Voucher & dịch vụ', name: 'Voucher & dịch vụ', id: '10' },
+  { value: 'Công nghệ kỹ thuật số', name: 'Công nghệ kỹ thuật số', id: '13' },
 ];
 type Props = any;
 

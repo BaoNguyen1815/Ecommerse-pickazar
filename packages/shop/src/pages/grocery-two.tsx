@@ -27,7 +27,7 @@ const bannerSlides = [
   },
 ];
 
-const PAGE_TYPE = 'grocery';
+const PAGE_TYPE = 'bakery';
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 

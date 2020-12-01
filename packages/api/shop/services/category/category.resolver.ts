@@ -10,6 +10,8 @@ export class CategoryResolver {
   async categories(
     @Arg('type', type => String) type: string
   ): Promise<Category[]> {
+    console.log("lkjhgdfghjklk",type);
+    
     return await this.items.filter(item => item.type === type);
     // return await this.items;
   }

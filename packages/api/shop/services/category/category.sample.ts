@@ -5,7 +5,7 @@ const loadCategories = (): Category[] => {
   return plainToClass(Category, [
     {
       id: 1,
-      title: 'Fruits & Vegetables',
+      title: 'Aon ca',
       slug: 'fruits-and-vegetables',
       products: [],
       type: 'grocery',
