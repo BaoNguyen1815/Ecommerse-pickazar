@@ -30,8 +30,8 @@ export function createProductSamples() : Promise<Product[]> {
         description:product.description==null ? 0:product.description,
         // description:
         //         'The lemon/lime, Citrus limon Osbeck, is a species of small evergreen tree in the flowering plant family Rutaceae, native to South Asia, primarily North eastern India.',
-        // type: product.category.type,
-        type: 'grocery',
+        type: product.category.type,
+        // type: 'grocery',
         // description:product.description,
       gallery: [
         {
