@@ -99,6 +99,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
   const size = useWindowSize();
 
   const handleSubmit = async () => {
+    console.log('add order')
     setLoading(true);
     if (isValid) {
       clearCart();

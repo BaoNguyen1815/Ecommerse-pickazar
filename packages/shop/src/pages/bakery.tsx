@@ -25,7 +25,7 @@ export const Main = styled.div<any>(
   })
 );
 
-const PAGE_TYPE = 'bakery';
+const PAGE_TYPE = 'Hoamipham';
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 

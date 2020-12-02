@@ -67,7 +67,7 @@ export const HorizontalCategoryCardMenu = ({ type }: Props) => {
       slidesPerView: 7,
     },
   };
-
+  
   return (
     <CategoryWrapper>
       <CategoryInner>

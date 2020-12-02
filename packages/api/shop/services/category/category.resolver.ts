@@ -11,10 +11,11 @@ export class CategoryResolver {
     @Arg('type', type => String) type: string
   ): Promise<Category[]> {
     let result= await this.items;
+    console.log('data',result);
     console.log('type:', type);
-    let type2 ="Thc-phm"
+    // let type2 ="Thc-phm"
     // return await this.items;
-    return await result.filter(item => item.type === type2);
+    return await result.filter(item => item.type === type);
   }
 
   @Query(() => Category)
@@ -22,6 +23,7 @@ export class CategoryResolver {
     @Arg('id', type => Int) id: number
   ): Promise<Category | undefined> {
     let result = await this.items;
+    console.log('id: ', id)
     return await result.find(item => item.id === id);
   }
 }

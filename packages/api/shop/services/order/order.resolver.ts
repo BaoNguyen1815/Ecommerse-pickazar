@@ -30,7 +30,8 @@ export class OrderResolver {
   @Mutation(() => Order, { description: 'Add an Order' })
   async addOrder(@Arg('orderInput') orderInput: string): Promise<Order> {
     let items = await this.items;
-
+    console.log('add order');
+    
     console.log(orderInput, 'orderinput');
     return await items[0];
   }
