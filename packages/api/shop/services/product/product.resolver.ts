@@ -17,7 +17,6 @@ export class ProductResolver {
     @Arg('category', { nullable: true }) category?: string
   ): Promise<ProductResponse> {
     const item =await this.items
-    console.log(item[0])
     const total = item.length;
     const filteredData = filterItems(
       item,

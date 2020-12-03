@@ -15,7 +15,6 @@ export default class CouponResolver {
     @Arg('searchBy', { nullable: true }) searchBy?: string
   ): Promise<Coupon[] | undefined> {
     let coupons = await  loadCoupons();
-    // console.log("coupons",coupons);
 
     if (status) {
       coupons = await coupons.filter(coupon => coupon.status === status);

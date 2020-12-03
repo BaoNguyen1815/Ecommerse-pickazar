@@ -30,7 +30,6 @@ export default class CustomerResolver {
     @Arg("id", type => ID) id: string
   ): Promise<Customer | undefined> {
     // as auth Customer. check from middleware.
-    console.log(id, "customer_id");
     const customers = await this.customersCollection;
      return customers.find(customer => customer.id === id)
   }

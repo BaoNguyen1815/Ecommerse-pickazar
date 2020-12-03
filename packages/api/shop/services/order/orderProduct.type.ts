@@ -1,6 +1,7 @@
 import { ObjectType, Field } from 'type-graphql';
 import { ProductType } from '../product/product.enum';
 import Category from '../category/category.type';
+import OrderDetail from './orderDetail.type';
 
 @ObjectType()
 export default class OrderProduct {
@@ -12,6 +13,9 @@ export default class OrderProduct {
 
   @Field()
   image: string;
+
+  @Field(type => [OrderDetail])
+  details : OrderDetail
 
   @Field(type => [Category])
   categories: Category[];

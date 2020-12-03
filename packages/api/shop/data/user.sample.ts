@@ -15,8 +15,6 @@ export function loadUsers() : Promise<User[]>{
       as :"contact"
     }]
   }).then((users :[User])=>{
-    // console.log(users[0])
-
     const user = users.map((user)=>{
       return{
         id: user.id,

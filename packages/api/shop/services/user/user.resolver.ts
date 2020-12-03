@@ -10,10 +10,7 @@ export class UserResolver {
 
   @Query(() => User)
   async me(@Arg('id') id: string): Promise<User> {
-    // as auth user. check from middleware.
-    console.log(id, 'user_id');
     let items= await this.items;
-    // console.log(items)
     return await items[0];
   }
 

@@ -42,5 +42,8 @@
     "*.{js,md,css}": [
       "prettier --trailing-comma es5 --single-quote --write"
     ]
+  },
+  "dependencies": {
+    "yarn": "^1.22.10"
   }
 }

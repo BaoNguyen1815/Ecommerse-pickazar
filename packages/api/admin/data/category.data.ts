@@ -26,7 +26,6 @@ const loadCategories = (): Promise<Category[]> => {
   
 
   .then((sub_categories : [Category])=>{
-    // console.log(sub_categories[0].category)
     const sub = sub_categories.map((subcategory)=>{
       return{
         id: subcategory.id,
@@ -40,7 +39,6 @@ const loadCategories = (): Promise<Category[]> => {
         }
       }
     })
-    // console.log(sub[0].category)
     return sub;
     
   })

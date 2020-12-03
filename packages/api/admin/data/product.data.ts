@@ -46,7 +46,6 @@ const loadProducts = (): Promise<Product[]> => {
         
       }
     })
-    console.log(tmp[0].category_parent)
     return tmp;
   })
 }

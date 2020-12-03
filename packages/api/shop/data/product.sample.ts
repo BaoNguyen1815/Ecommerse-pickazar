@@ -2,7 +2,6 @@ import Product from '../services/product/product.type';
 import { plainToClass } from 'class-transformer';
 const db = require('../../database_client')
 export function createProductSamples() : Promise<Product[]> {
-  console.log("aaaaaaa")
   return db.products.findAll({
     include:[{
       model:db.sub_categories,
@@ -17,7 +16,6 @@ export function createProductSamples() : Promise<Product[]> {
      }
     ]
   }).then((products :[Product])=>{
-    // console.log(products[0]);
     const prd = products.map((product:any)=>{
       return{
         id: product.id,
@@ -60,7 +58,7 @@ export function createProductSamples() : Promise<Product[]> {
         }]
       }
     })
-    console.log(prd[0])
+    
     return prd;
   })
 }

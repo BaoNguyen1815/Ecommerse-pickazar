@@ -15,7 +15,6 @@ export default class CategoryResolver {
     @Arg('searchBy', { defaultValue: '' }) searchBy?: string
   ): Promise<Category[]> {
     let categories =await loadCategories();
-    // console.log("jhgfd",categories)
       
     if (type) {
       categories = await categories.filter(category => category.type === type);

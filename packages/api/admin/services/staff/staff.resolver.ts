@@ -24,7 +24,6 @@ export default class StaffResolver {
   @Query(() => Staff)
   async staff(@Arg('id', (type) => ID) id: string): Promise<Staff | undefined> {
     // as auth Staff. check from middleware.
-    console.log(id, 'staff_id');
     let staffs = await this.staffsCollection;
 
     return await staffs.find((staff) => staff.id === id);
