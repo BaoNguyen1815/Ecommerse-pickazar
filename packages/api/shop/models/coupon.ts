@@ -1,25 +1,31 @@
 module.exports = function (sequelize: any, DataTypes: any) {
-    const users = sequelize.define("users",{
+    const coupons = sequelize.define("coupons",{
         id:{
-            type:DataTypes.INTEGER,     
+            type:DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
             field:"id",
         },
-        name:{
+        title:{
             type: DataTypes.STRING,
             allowNull: true,
-            field:"name",
+            field:"type",
         },
-        email:{
+        code:{
             type: DataTypes.STRING,
             allowNull: true,
-            field:"email",
+            field:"code",
         },
+        discountInPercent:{
+            type: DataTypes.INT,
+            allowNull: true,
+            field:"discount",
+        },
+        
     },{
-        tableName: "users",
+        tableName: "coupons",
         freezeTableName: true,
         timestamps: false,
     })
-    return users;
+    return coupons;
 };

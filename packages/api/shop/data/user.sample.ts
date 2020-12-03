@@ -23,7 +23,7 @@ export function loadUsers() : Promise<User[]>{
         address:user.address.map(add=>{
           return{
             id:add.id,
-            type:add.type = 0 ? "secondary":"primary",
+            type:add.type == "0" ? "secondary":"primary",
             name:add.name,
             info:add.info,
           }
@@ -31,7 +31,7 @@ export function loadUsers() : Promise<User[]>{
         contact:user.contact.map(cont=>{
           return{
             id:cont.id,
-            type:cont.type,
+            type:cont.type == "0" ? "secondary":"primary",
             number:cont.number,
           }
         }),
@@ -67,7 +67,7 @@ export function loadUsers() : Promise<User[]>{
                 ]
       }
     })
-    console.log(user[0])
+    // console.log(user[0])
     return user;
   })
 }
