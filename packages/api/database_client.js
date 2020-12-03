@@ -27,6 +27,9 @@ let models = [
   require('./shop/models/orders'),
   require('./shop/models/order_detail'),
   require('./shop/models/products'),
+  require('./shop/models/users'),
+  require('./shop/models/address'),
+  require('./shop/models/contact'),
 ];
 
 models.forEach((model) => {
@@ -52,6 +55,22 @@ db.sub_categories.hasMany(db.sub_sub_categories, {
 });
 // db.categories.hasMany(db.sub_categories,{foreignKey: 'category_id'})
 db.sub_categories.belongsTo(db.categories, { foreignKey: 'category_id' });
+// db.orders.belongsToMany(db.products,{through: db.order_details,foreignKey: 'order_id', otherKey: 'product_id'});
+db.products.belongsTo(db.sub_categories, {
+  as: 'categories',
+  foreignKey: 'subcategory_id',
+});
+db.products.belongsTo(db.sub_sub_categories, {
+  foreignKey: 'subsubcategory_id',
+});
+db.products.belongsTo(db.categories, {
+  as: 'category',
+  foreignKey: 'category_id',
+});
+db.users.hasMany(db.addresses, { as: 'address', foreignKey: 'user_id' });
+db.users.hasMany(db.contact, { as: 'contact', foreignKey: 'user_id' });
+// db.products.hasMany(db.sub_categories,{foreignKey:'subcategory_id'})
+
 Object.keys(db).forEach((key) => {
   if ('associate' in db[key]) {
     db[key].associate(db);

@@ -1,37 +1,48 @@
-module.exports = function(sequelize : any, DataTypes : any){
-    const products = sequelize.define(
-        'products',{
-            id: {
-                type: DataTypes.INTEGER,
-                primaryKey : true,
-                allowNull : false
-            },
-            title:{
-                type : DataTypes.STRING,
-                allowNull : false,
-                field: 'name'
-            },
-            weight:{
-                type: DataTypes.STRING,
-                allowNull : false,
-                field: 'weight'
-            },
-            price:{
-                type : DataTypes.INTEGER,
-                allowNull: false,
-                field: 'unit_price'
-            },
-            image:{
-                type: DataTypes.STRING,
-                allowNull : true,
-                field: 'photos'
-            }
+module.exports = function (sequelize: any, DataTypes: any) {
+
+    const products = sequelize.define("products", {
+        id: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          primaryKey: true,
         },
-        {
-            tableName : 'products',
-            freezeTableName: true,
-            timestamps: false
+        title: {
+          type: DataTypes.STRING,
+          allowNull: true,
+          field: "name",
+        },
+        price: {
+          type: DataTypes.INTEGER,
+          allowNull: true,
+          field: "unit_price",
+        },
+        slug:{
+            type: DataTypes.STRING,
+            allowNull:true,
+        },
+        weight:{
+            type: DataTypes.STRING,
+            allowNull : false,
+            field: 'weight'
+        },
+        unit:{
+            type: DataTypes.STRING,
+            allowNull:true,
+        },
+        description:{
+            type: DataTypes.STRING,
+            allowNull:true,
+            field:"meta_description"
+        },
+        image:{
+          type: DataTypes.STRING,
+            allowNull:true,
+            field:"thumbnail_img"
         }
-    )
-    return products;
-}
+      }, {
+        tableName: "products",
+        freezeTableName: true,
+        timestamps: false,
+      })
+      return products;
+    };
