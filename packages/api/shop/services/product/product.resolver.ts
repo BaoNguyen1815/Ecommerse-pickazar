@@ -1,14 +1,15 @@
 import { Resolver, Query, Arg, Int, ObjectType } from 'type-graphql';
 import { createProductSamples } from '../../data/product.sample';
 import Product, { ProductResponse } from './product.type';
+import Products from './products.type';
 import { filterItems, getRelatedItems } from '../../helpers/filter';
 
 @Resolver()
 export class ProductResolver {
-  private readonly items:Product[] = createProductSamples();
+  private readonly items:Promise<Product[]> = createProductSamples();
 
-  @Query({ description: 'Get all the products' })
-  products(
+  @Query((returns) => Products)
+  async products(
     @Arg('limit', (type) => Int, { defaultValue: 10 }) limit: number,
     @Arg('offset', (type) => Int, { defaultValue: 0 }) offset: number,
     @Arg('type', { nullable: true }) type?: string,
@@ -16,9 +17,10 @@ export class ProductResolver {
     @Arg('category', { nullable: true }) category?: string
   ): Promise<ProductResponse> {
     const item =await this.items
+    // console.log(item[0])
     const total = item.length;
     const filteredData = filterItems(
-      this.items,
+      item,
       limit,
       offset,
       text,
@@ -36,7 +38,8 @@ export class ProductResolver {
   async product(
     @Arg('slug', (type) => String) slug: string
   ): Promise<Product | undefined> {
-    return await this.items.find((item) => item.slug === slug);
+    const product =await this.items
+    return await product.find((item) => item.slug === slug);
   }
 
   @Query(() => [Product], { description: 'Get the Related products' })

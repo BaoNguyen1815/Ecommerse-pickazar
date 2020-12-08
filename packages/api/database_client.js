@@ -37,7 +37,24 @@ models.forEach((model) => {
   const seqModel = model(sequelize, Sequelize);
   db[seqModel.name] = seqModel;
 });
+db.orders.belongsToMany(db.products, {
+  through: db.order_details,
+  foreignKey: 'order_id',
+  otherKey: 'product_id',
+});
+db.orders.hasMany(db.order_details, { foreignKey: 'order_id' });
+db.products.hasOne(db.order_details, { foreignKey: 'product_id' });
 
+db.categories.belongsToMany(db.sub_sub_categories, {
+  through: db.sub_categories,
+  foreignKey: 'category_id',
+  otherKey: 'id',
+});
+db.sub_categories.hasMany(db.sub_sub_categories, {
+  foreignKey: 'sub_category_id',
+});
+// db.categories.hasMany(db.sub_categories,{foreignKey: 'category_id'})
+db.sub_categories.belongsTo(db.categories, { foreignKey: 'category_id' });
 // db.orders.belongsToMany(db.products,{through: db.order_details,foreignKey: 'order_id', otherKey: 'product_id'});
 db.products.belongsTo(db.sub_categories, {
   // as: 'categories',
@@ -45,27 +62,15 @@ db.products.belongsTo(db.sub_categories, {
 });
 db.products.belongsTo(db.sub_sub_categories, {
   foreignKey: 'subsubcategory_id',
+  // as: 'categories',
 });
 db.products.belongsTo(db.categories, {
-  // as: 'category',
+  // as: 'categories',
   foreignKey: 'category_id',
 });
 db.users.hasMany(db.addresses, { as: 'address', foreignKey: 'user_id' });
 db.users.hasMany(db.contact, { as: 'contact', foreignKey: 'user_id' });
 // db.products.hasMany(db.sub_categories,{foreignKey:'subcategory_id'})
-
-db.orders.belongsToMany(db.products, {
-  through: db.order_details,
-  foreignKey: 'order_id',
-  otherKey: 'product_id',
-});
-db.orders.hasMany(db.order_details, { foreignKey: 'order_id' });
-// db.order_details.belongsTo(db.products,{foreignKey: 'product_id'})
-db.products.hasOne(db.order_details, { foreignKey: 'product_id' });
-
-db.sub_categories.hasMany(db.sub_sub_categories, {
-  foreignKey: 'sub_category_id',
-});
 Object.keys(db).forEach((key) => {
   if ('associate' in db[key]) {
     db[key].associate(db);

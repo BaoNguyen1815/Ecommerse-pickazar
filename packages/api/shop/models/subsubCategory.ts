@@ -8,12 +8,17 @@ module.exports = function (sequelize: any, DataTypes: any) {
         title: {
             type: DataTypes.STRING,
             allowNull: true,
-            field: "name",
+            field: "meta_title",
         },
         slug:{
             type: DataTypes.STRING,
             allowNull:true,
-        }
+        },
+        type:{
+            type:DataTypes.STRING,
+            allowNull: false,
+            field : 'name'
+        },
     },{
         tableName: "sub_sub_Categories",
         freezeTableName: true,
