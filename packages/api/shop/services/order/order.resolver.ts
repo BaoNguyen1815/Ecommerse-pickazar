@@ -6,7 +6,7 @@ import { take } from 'lodash';
 
 @Resolver()
 export class OrderResolver {
-  private readonly items: Order[] = loadOrders();
+  private readonly items: Promise<Order[]> = loadOrders();
 
   @Query(() => [Order], { description: 'Get all the Orders' })
   async orders(
@@ -14,18 +14,25 @@ export class OrderResolver {
     @Arg('text', type => String, { nullable: true }) text: string,
     @Arg('limit', type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Order[]> {
+    let items = await this.items;
+    // console.log(items);
+    // let userid = 17
     // return await take(this.items.filter(item => item.userId === user), limit);
-    return await filterOrder(this.items, user, limit, text);
+    return await filterOrder(items, user, limit, text);
   }
 
   @Query(() => Order, { description: 'Get single order' })
   async order(@Arg('id', type => Int) id: number): Promise<Order | undefined> {
-    return await this.items.find(item => item.id === id);
+    let items = await this.items;
+    return await items.find(item => item.id === id);
   }
 
   @Mutation(() => Order, { description: 'Add an Order' })
   async addOrder(@Arg('orderInput') orderInput: string): Promise<Order> {
+    let items = await this.items;
+    console.log('add order');
+    
     console.log(orderInput, 'orderinput');
-    return await this.items[0];
+    return await items[0];
   }
 }

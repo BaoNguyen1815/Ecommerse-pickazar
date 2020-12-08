@@ -99,7 +99,6 @@ export default function Customers() {
     setSearch(value);
     refetch({ searchBy: value });
   }
-  console.log(data, 'data');
 
   return (
     <Grid fluid={true}>
@@ -165,7 +164,7 @@ export default function Customers() {
                             </ImageWrapper>
                           </StyledBodyCell>
                           <StyledBodyCell>{row[3]}</StyledBodyCell>
-                          <StyledBodyCell>{row[4][1].number}</StyledBodyCell>
+                          <StyledBodyCell>{row[4][0].number}</StyledBodyCell>
                           <StyledBodyCell>{row[5]}</StyledBodyCell>
                           <StyledBodyCell>${row[6]}</StyledBodyCell>
                           <StyledBodyCell>

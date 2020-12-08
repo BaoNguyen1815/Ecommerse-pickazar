@@ -5,7 +5,7 @@ import AddStaffInput from './staff.input_type';
 import search from '../../helpers/search';
 @Resolver()
 export default class StaffResolver {
-  private readonly staffsCollection: Staff[] = loadStaffs();
+  private readonly staffsCollection: Promise<Staff[]> = loadStaffs();
 
   @Query(() => [Staff])
   async staffs(
@@ -13,7 +13,7 @@ export default class StaffResolver {
     @Arg('searchBy', { nullable: true }) searchBy?: string
   ): Promise<Staff[] | undefined> {
     // as auth Staff. check from middleware.
-    let staffs = this.staffsCollection;
+    let staffs = await this.staffsCollection;
     if (role) {
       staffs = staffs.filter(
         (staff) => staff.role.toLowerCase() === role.toLowerCase()
@@ -24,8 +24,9 @@ export default class StaffResolver {
   @Query(() => Staff)
   async staff(@Arg('id', (type) => ID) id: string): Promise<Staff | undefined> {
     // as auth Staff. check from middleware.
-    console.log(id, 'staff_id');
-    return await this.staffsCollection.find((staff) => staff.id === id);
+    let staffs = await this.staffsCollection;
+
+    return await staffs.find((staff) => staff.id === id);
   }
 
   @Mutation(() => Staff, { description: 'Create Staff' })

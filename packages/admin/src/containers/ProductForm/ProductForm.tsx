@@ -35,10 +35,14 @@ const options = [
 ];
 
 const typeOptions = [
-  { value: 'grocery', name: 'Grocery', id: '1' },
-  { value: 'women-cloths', name: 'Women Cloths', id: '2' },
-  { value: 'bags', name: 'Bags', id: '3' },
-  { value: 'makeup', name: 'Makeup', id: '4' },
+  { value: 'Thực phẩm', name: 'Thực phẩm',id :'1' },
+  { value: 'Thực phẩm chức năng', name: 'Thực phẩm chức năng',id :'2' },
+  { value: 'Hóa mỹ phẩm', name: 'Hóa mỹ phẩm' ,id :'3'},
+  { value: 'Mẹ và bé', name: 'Mẹ và bé',id :'4' },
+  { value: 'Điện máy', name: 'Điện máy' ,id :'5'},
+  { value: 'Homelife', name: 'Homelife',id :'6' },
+  { value: 'Voucher & dịch vụ', name: 'Voucher & dịch vụ',id :'10' },
+  { value: 'Công nghệ kỹ thuật số', name: 'Công nghệ kỹ thuật số',id :'13' },
 ];
 const GET_PRODUCTS = gql`
   query getProducts(
@@ -148,6 +152,8 @@ const AddProduct: React.FC<Props> = (props) => {
       id: uuidv4(),
       name: data.name,
       type: data.type[0].value,
+      category_id : data.type[0].id,
+      subcategory_id : data.categories[0].id,
       description: data.description,
       image: data.image && data.image.length !== 0 ? data.image : '',
       price: Number(data.price),

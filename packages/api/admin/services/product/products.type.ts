@@ -5,9 +5,9 @@ export default class ProductsConnection {
   @Field(type => [Product])
   items: Product[];
 
-  @Field(type => Int)
+  @Field(type => Int,{ nullable: true })
   totalCount: number;
 
-  @Field()
+  @Field({ nullable: true })
   hasMore: boolean;
 }

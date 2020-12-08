@@ -6,9 +6,11 @@ const loadOrders =  () : Promise<Order[]> =>  {
     
     return db.orders.findAll({
     include: [{
-      model: db.products
+      model: db.ordered_products,
+      as: 'products'
     }]
-  }).then((orders : [Order]) => {
+  })
+  .then((orders : [Order]) => {
     const tmp = orders.map((order)=>{
       const jsonAddress = JSON.parse(order.delivery_address);
       const delivery_address = jsonAddress.address +", "+jsonAddress.city + ", " + jsonAddress.country;
@@ -42,6 +44,7 @@ const loadOrders =  () : Promise<Order[]> =>  {
     
     return tmp;
   })
+  
 }
 
 

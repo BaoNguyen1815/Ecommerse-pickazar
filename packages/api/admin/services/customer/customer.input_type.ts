@@ -20,10 +20,10 @@ export default class AddCustomerInput implements Partial<Customer> {
   @Field(type => [AddAddressInput])
   address: AddAddressInput[];
 
-  @Field(type => [AddContactInput])
+  @Field(type => [AddContactInput],{nullable: true})
   contact: AddContactInput[];
 
-  @Field(type => [AddCardInput])
+  @Field(type => [AddCardInput],{nullable: true})
   card: AddCardInput[];
 
   password: string;

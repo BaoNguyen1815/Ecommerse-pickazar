@@ -27,7 +27,7 @@ const bannerSlides = [
   },
 ];
 
-const PAGE_TYPE = 'furniture-two';
+const PAGE_TYPE = 'Congnghe';
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 

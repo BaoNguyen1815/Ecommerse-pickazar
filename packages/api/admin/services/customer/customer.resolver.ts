@@ -5,7 +5,7 @@ import search from "../../helpers/search";
 import { sortByHighestNumber, sortByLowestNumber } from "../../helpers/sorts";
 @Resolver()
 export default class CustomerResolver {
-  private readonly customersCollection: Customer[] = loadCustomers();
+  private readonly customersCollection: Promise<Customer[]> = loadCustomers();
 
   @Query(() => [Customer])
   async customers(
@@ -14,7 +14,7 @@ export default class CustomerResolver {
     @Arg("limit", type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Customer[] | undefined> {
     // as auth Customer. check from middleware.
-    let customers = this.customersCollection;
+    let customers = await this.customersCollection;
 
     if (sortBy === "highestToLowest") {
       customers = await sortByHighestNumber(customers, "total_order_amount");
@@ -30,8 +30,8 @@ export default class CustomerResolver {
     @Arg("id", type => ID) id: string
   ): Promise<Customer | undefined> {
     // as auth Customer. check from middleware.
-    console.log(id, "customer_id");
-    return await this.customersCollection.find(customer => customer.id === id);
+    const customers = await this.customersCollection;
+     return customers.find(customer => customer.id === id)
   }
   // input CustomersFilterInput{
   //   id:

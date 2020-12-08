@@ -33,7 +33,7 @@ export default class Coupon {
   status: string;
 
   @Field({ nullable: true })
-  expiration_date?: Date;
+  expiration_date?: string;
 
   @Field({ nullable: true })
   description?: string;
