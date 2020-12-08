@@ -5,14 +5,14 @@ export function createProductSamples() : Promise<Product[]> {
   return db.products.findAll({
     include:[{
       model:db.sub_categories,
-      as:"categories"
+      // as:"categories"
      },{
        model:db.sub_sub_categories,
       //  as:"categories"
      },
      {
        model:db.categories,
-       as:"category"
+      //  as:"category"
      }
     ]
   }).then((products :[Product])=>{

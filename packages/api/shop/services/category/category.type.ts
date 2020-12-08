@@ -1,4 +1,5 @@
 import { ObjectType, Field, Int } from 'type-graphql';
+import categoryType from './categoryType.type';
 
 @ObjectType()
 export default class Category {
@@ -19,6 +20,9 @@ export default class Category {
 
   @Field(type => [Category], { nullable: true })
   children?: Category[];
+
+  @Field(type => [categoryType])
+  typeinfor : categoryType;
 
   @Field(type => String, { nullable: true })
   icon?: string;

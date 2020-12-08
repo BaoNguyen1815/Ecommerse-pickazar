@@ -21,12 +21,12 @@ let models = [
   // require('./admin/models/product'),
   // require('./admin/models/orderDetail'),
   require('./shop/models/products'),
-  require('./shop/models/subCategory'),
-  require('./shop/models/subsubCategory'),
+  require('./shop/models/subCategories'),
+  require('./shop/models/subsubCategories'),
   require('./shop/models/users'),
   require('./shop/models/address'),
   require('./shop/models/contact'),
-  require('./shop/models/category'),
+  require('./shop/models/categories'),
   require('./shop/models/orders'),
   require('./shop/models/order_detail'),
 ]
@@ -40,14 +40,14 @@ models.forEach((model) => {
 
 // db.orders.belongsToMany(db.products,{through: db.order_details,foreignKey: 'order_id', otherKey: 'product_id'});
 db.products.belongsTo(db.sub_categories, {
-  as: 'categories',
+  // as: 'categories',
   foreignKey: 'subcategory_id',
 });
 db.products.belongsTo(db.sub_sub_categories, {
   foreignKey: 'subsubcategory_id',
 });
 db.products.belongsTo(db.categories, {
-  as: 'category',
+  // as: 'category',
   foreignKey: 'category_id',
 });
 db.users.hasMany(db.addresses, { as: 'address', foreignKey: 'user_id' });

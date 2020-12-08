@@ -16,7 +16,7 @@ export class OrderResolver {
   ): Promise<Order[]> {
     let items = await this.items;
     // console.log(items);
-    
+    // let userid = 17
     // return await take(this.items.filter(item => item.userId === user), limit);
     return await filterOrder(items, user, limit, text);
   }
@@ -30,7 +30,8 @@ export class OrderResolver {
   @Mutation(() => Order, { description: 'Add an Order' })
   async addOrder(@Arg('orderInput') orderInput: string): Promise<Order> {
     let items = await this.items;
-
+    console.log('add order');
+    
     console.log(orderInput, 'orderinput');
     return await items[0];
   }

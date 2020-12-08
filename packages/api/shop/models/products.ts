@@ -20,6 +20,11 @@ module.exports = function (sequelize: any, DataTypes: any) {
             type: DataTypes.STRING,
             allowNull:true,
         },
+        weight:{
+            type: DataTypes.STRING,
+            allowNull : false,
+            field: 'weight'
+        },
         unit:{
             type: DataTypes.STRING,
             allowNull:true,
@@ -34,11 +39,11 @@ module.exports = function (sequelize: any, DataTypes: any) {
             allowNull:true,
             field:"thumbnail_img"
         },
-        weight:{
-            type: DataTypes.STRING,
-            allowNull : false,
-            field: 'weight'
-        },
+        // weight:{
+        //     type: DataTypes.STRING,
+        //     allowNull : false,
+        //     field: 'weight'
+        // },
       }, {
         tableName: "products",
         freezeTableName: true,

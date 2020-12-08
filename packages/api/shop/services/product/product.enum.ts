@@ -1,16 +1,17 @@
 import { registerEnumType } from 'type-graphql';
 
 export enum ProductType {
-  BOOK = 'book',
-  BAGS = 'bags',
-  GROCERY = 'grocery',
+  BOOK = 'Voucherdichvu',
+  BAGS = 'Homelife',
+  GROCERY = 'Thucpham',
+  GROCERY_TWO= "Thucphamchucnang",
   MEDICINE = 'medicine',
   CLOTH = 'cloth',
-  CLOTHING = 'clothing',
-  FURNITURE = 'furniture',
+  CLOTHING = 'Dienmay',
+  FURNITURE = 'Congnghe',
   FURNITURE_TWO = 'furniture-two',
-  MAKEUP = 'makeup',
-  BAKERY = 'bakery',
+  MAKEUP = 'Mevabe',
+  BAKERY = 'Hoamipham',
 }
 
 registerEnumType(ProductType, {

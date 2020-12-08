@@ -1,12 +1,12 @@
 export const HOME_PAGE = '/';
-export const GROCERY_PAGE = '/grocery';
-export const GROCERY_PAGE_TWO = '/grocery-two';
-export const BAKERY_PAGE = '/bakery';
-export const MAKEUP_PAGE = '/makeup';
-export const CLOTHING_PAGE = '/clothing';
-export const BAGS_PAGE = '/bags';
-export const BOOK_PAGE = '/book';
-export const FURNITURE_PAGE = '/furniture';
+export const GROCERY_PAGE = '/Thucpham';
+export const GROCERY_PAGE_TWO = '/Thucphamchucnang';
+export const BAKERY_PAGE = '/Hoamipham';
+export const MAKEUP_PAGE = '/Mevabe';
+export const CLOTHING_PAGE = '/Dienmay';
+export const BAGS_PAGE = '/Homelife';
+export const BOOK_PAGE = '/Voucherdichvu';
+export const FURNITURE_PAGE = '/Congnghe';
 export const FURNITURE_PAGE_TWO = '/furniture-two';
 export const MEDICINE_PAGE = '/medicine';
 // export const RESTAURANT_PAGE = '/restaurant';
@@ -85,75 +85,75 @@ export const AUTHORIZED_MENU_ITEMS = [
 // category menu items for header navigation
 export const CATEGORY_MENU_ITEMS = [
   {
-    id: 'nav.grocery',
+    id: 'nav.Thực phẩm',
     href: GROCERY_PAGE,
-    defaultMessage: 'Grocery',
+    defaultMessage: 'Thực phẩm',
     icon: 'FruitsVegetable',
     dynamic: true,
   },
   {
-    id: 'nav.grocery-two',
+    id: 'nav.Thực phẩm chức năng',
     href: GROCERY_PAGE_TWO,
-    defaultMessage: 'Grocery Two',
+    defaultMessage: 'Thực phẩm chức năng',
     icon: 'FruitsVegetable',
     dynamic: false,
   },
   {
-    id: 'nav.bakery',
+    id: 'nav.Hóa mĩ phẩm',
     href: BAKERY_PAGE,
-    defaultMessage: 'Bakery',
+    defaultMessage: 'Hóa mĩ phẩm',
     icon: 'Bakery',
     dynamic: false,
   },
   {
-    id: 'nav.makeup',
-    defaultMessage: 'Makeup',
+    id: 'nav.Mẹ và bé',
+    defaultMessage: 'Mẹ và bé',
     href: MAKEUP_PAGE,
     icon: 'FacialCare',
     dynamic: true,
   },
   {
-    id: 'nav.bags',
-    defaultMessage: 'Bags',
+    id: 'nav.Điện máy',
+    defaultMessage: 'Điện máy',
     href: BAGS_PAGE,
     icon: 'Handbag',
     dynamic: true,
   },
   {
-    id: 'nav.clothing',
-    defaultMessage: 'Clothing',
+    id: 'nav.Homelife',
+    defaultMessage: 'Homelife',
     href: CLOTHING_PAGE,
     icon: 'DressIcon',
     dynamic: true,
   },
   {
-    id: 'nav.furniture',
-    defaultMessage: 'Furniture',
+    id: 'nav.Voucher',
+    defaultMessage: 'Voucher',
     href: FURNITURE_PAGE,
     icon: 'FurnitureIcon',
     dynamic: true,
   },
   {
-    id: 'nav.furniture-two',
-    defaultMessage: 'Furniture Two',
+    id: 'nav.Công nghệ',
+    defaultMessage: 'Công nghệ',
     href: FURNITURE_PAGE_TWO,
     icon: 'FurnitureIcon',
     dynamic: false,
   },
-  {
-    id: 'nav.book',
-    defaultMessage: 'Book',
-    href: BOOK_PAGE,
-    icon: 'BookIcon',
-    dynamic: true,
-  },
-  {
-    id: 'nav.medicine',
-    defaultMessage: 'Medicine',
-    href: MEDICINE_PAGE,
-    icon: 'MedicineIcon',
-    dynamic: true,
-  },
+  // {
+  //   id: 'nav.book',
+  //   defaultMessage: 'Book',
+  //   href: BOOK_PAGE,
+  //   icon: 'BookIcon',
+  //   dynamic: true,
+  // },
+  // {
+  //   id: 'nav.medicine',
+  //   defaultMessage: 'Medicine',
+  //   href: MEDICINE_PAGE,
+  //   icon: 'MedicineIcon',
+  //   dynamic: true,
+  // },
   // {
   //   id: 'nav.foods',
   //   defaultMessage: 'Foods',

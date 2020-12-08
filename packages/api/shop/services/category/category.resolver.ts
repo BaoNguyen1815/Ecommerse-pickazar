@@ -19,6 +19,7 @@ export class CategoryResolver {
     @Arg('id', type => Int) id: number
   ): Promise<Category | undefined> {
     let result = await this.items;
+    console.log('id: ', id)
     return await result.find(item => item.id === id);
   }
 }

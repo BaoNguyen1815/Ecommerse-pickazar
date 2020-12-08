@@ -8,7 +8,7 @@ module.exports = function(sequelize :any, DataTypes: any) {
                 primaryKey : true
             },
             type:{
-                type : DataTypes.SRING,
+                type : DataTypes.STRING,
                 allowNull: false,
                 field : 'name'
             },
