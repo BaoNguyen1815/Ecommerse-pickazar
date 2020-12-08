@@ -12,10 +12,10 @@ module.exports = function(sequelize :any, DataTypes: any) {
                 allowNull: false,
                 field : 'name'
             },
-            // slug:{
-            //     type : DataTypes.STRING,
-            //     allowNull : false
-            // }
+            slug:{
+                type : DataTypes.STRING,
+                allowNull : false
+            }
         },{
             tableName :'categories',
             freezeTableName : true,

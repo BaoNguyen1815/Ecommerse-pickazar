@@ -5,10 +5,15 @@ module.exports = function (sequelize: any, DataTypes: any) {
             allowNull: false,
             primaryKey: true,
           },
+          type:{
+            type : DataTypes.STRING,
+            allowNull : true,
+            field: 'name'
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: true,
-            field: "name",
+            field: "meta_title",
         },
         slug:{
             type: DataTypes.STRING,

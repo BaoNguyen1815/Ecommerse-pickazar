@@ -88,6 +88,9 @@ export default class Product {
   unit: string;
 
   @Field()
+  weight: number;
+
+  @Field()
   image: string;
 
   @Field(() => [Gallery])

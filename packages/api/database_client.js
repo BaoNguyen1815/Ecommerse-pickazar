@@ -57,14 +57,15 @@ db.sub_categories.hasMany(db.sub_sub_categories, {
 db.sub_categories.belongsTo(db.categories, { foreignKey: 'category_id' });
 // db.orders.belongsToMany(db.products,{through: db.order_details,foreignKey: 'order_id', otherKey: 'product_id'});
 db.products.belongsTo(db.sub_categories, {
-  as: 'categories',
+  // as: 'categories',
   foreignKey: 'subcategory_id',
 });
 db.products.belongsTo(db.sub_sub_categories, {
   foreignKey: 'subsubcategory_id',
+  // as: 'categories',
 });
 db.products.belongsTo(db.categories, {
-  as: 'category',
+  // as: 'categories',
   foreignKey: 'category_id',
 });
 db.users.hasMany(db.addresses, { as: 'address', foreignKey: 'user_id' });

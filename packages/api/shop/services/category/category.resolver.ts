@@ -11,7 +11,7 @@ export class CategoryResolver {
     @Arg('type', type => String) type: string
   ): Promise<Category[]> {
     let result= await this.items;
-    console.log('data',result);
+    // console.log('data',result);
     console.log('type:', type);
     // let type2 ="Thc-phm"
     // return await this.items;

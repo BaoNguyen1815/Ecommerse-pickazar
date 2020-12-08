@@ -6,18 +6,18 @@ export function createProductSamples() : Promise<Product[]> {
   return db.products.findAll({
     include:[{
       model:db.sub_categories,
-      as:"categories"
+      // as:"categories"
      },{
        model:db.sub_sub_categories,
-      //  as:"categories"
      },
      {
        model:db.categories,
-       as:"category"
+      //  as:"category"
      }
     ]
-  }).then((products :[Product])=>{
-    // console.log(products[0]);
+  })
+  .then((products :[Product])=>{
+    console.log(products[0]);
     const prd = products.map((product:any)=>{
       return{
         id: product.id,
@@ -30,7 +30,7 @@ export function createProductSamples() : Promise<Product[]> {
         description:product.description==null ? 0:product.description,
         // description:
         //         'The lemon/lime, Citrus limon Osbeck, is a species of small evergreen tree in the flowering plant family Rutaceae, native to South Asia, primarily North eastern India.',
-        type: product.category.type,
+        type: product.category.slug,
         // type: 'grocery',
         // description:product.description,
       gallery: [
@@ -50,13 +50,13 @@ export function createProductSamples() : Promise<Product[]> {
         }, ],
         image:product.image,
         categories: [{
-          id : product.categories.id,
-          title: product.categories.title,
-          slug: product.categories.slug,
-        }, {
           id : product.sub_sub_category ?  product.sub_sub_category.id : 0 ,
           title:product.sub_sub_category ? product.sub_sub_category.title:0 ,
           slug:product.sub_sub_category ? product.sub_sub_category.slug :0 ,
+        },{
+          id : product.sub_category ?  product.sub_category.id : 0 ,
+          title:product.sub_category ? product.sub_category.title:0 ,
+          slug:product.sub_category ? product.sub_category.slug :0 ,
         }]
       }
     })
