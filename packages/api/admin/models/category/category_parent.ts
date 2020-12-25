@@ -14,9 +14,9 @@ module.exports = function(sequelize: any, DataTypes: any){
         //     type: DataTypes.STRING,
             
         //   },
-        //   slug: {
-        //     type: DataTypes.STRING,
-        //   },
+          slug: {
+            type: DataTypes.STRING,
+          },
 
     },{
         tableName: 'categories',

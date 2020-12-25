@@ -8,7 +8,7 @@ export class CategoryResolver {
 
   @Query(() => [Category], { description: 'Get all the categories' })
   async categories(
-    @Arg('type', type => String) type: string = 'Thực phẩm'
+    @Arg('type', type => String) type: string = 'Thucpham'
   ): Promise<Category[]> {
     let result= await this.items;
     // console.log('data',result);
@@ -18,6 +18,7 @@ export class CategoryResolver {
     return await result.filter(item => item.type === type);
   }
 
+  
   @Query(() => Category)
   async category(
     @Arg('id', type => Int) id: number

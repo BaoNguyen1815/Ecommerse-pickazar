@@ -57,7 +57,7 @@ export function createProductSamples() : Promise<Product[]> {
         }]
       }
     })
-    
+    console.log(prd[0])
     return prd;
   })
 }

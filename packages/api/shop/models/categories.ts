@@ -15,6 +15,11 @@ module.exports = function(sequelize :any, DataTypes: any) {
             slug:{
                 type : DataTypes.STRING,
                 allowNull : false
+            },
+            title:{
+                type: DataTypes.STRING,
+                allowNull: false,
+                field: 'meta_title'
             }
         },{
             tableName :'categories',

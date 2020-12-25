@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 var db = {};
 
-const sequelize = new Sequelize('ecommerce', 'root', '', {
+const sequelize = new Sequelize('store', 'root', '', {
   host: 'localhost',
   port: '3306',
   dialect: 'mysql',
@@ -29,7 +29,7 @@ let models = [
   require('./admin/models/customer/customers'),
   require('./admin/models/customer/addresses'),
   require('./admin/models/customer/contacts'),
-  require('./admin/models/staff/staffs')
+  require('./admin/models/staff/staffs'),
 ];
 
 models.forEach((model) => {
@@ -37,11 +37,16 @@ models.forEach((model) => {
   db[seqModel.name] = seqModel;
 });
 
-db.orders.belongsToMany(db.ordered_products, {as: 'products',through: db.order_details,foreignKey: 'order_id', otherKey: 'product_id'});
-db.customers.hasMany(db.addresses,{foreignKey: 'customer_id'});
-db.customers.hasMany(db.orders, {foreignKey: 'customer_id'} )
-db.customers.hasMany(db.contacts, {foreignKey: 'customer_id'} )
-db.staffs.hasMany(db.contacts, {foreignKey: 'customer_id'} )
+db.orders.belongsToMany(db.ordered_products, {
+  as: 'products',
+  through: db.order_details,
+  foreignKey: 'order_id',
+  otherKey: 'product_id',
+});
+db.customers.hasMany(db.addresses, { foreignKey: 'customer_id' });
+db.customers.hasMany(db.orders, { foreignKey: 'customer_id' });
+db.customers.hasMany(db.contacts, { foreignKey: 'customer_id' });
+db.staffs.hasMany(db.contacts, { foreignKey: 'customer_id' });
 db.products.belongsTo(db.sub_categories, { foreignKey: 'subcategory_id' });
 db.products.belongsTo(db.category, {
   as: 'category_parent',

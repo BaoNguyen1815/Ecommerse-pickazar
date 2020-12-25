@@ -15,7 +15,7 @@ export default class Category {
   @Field(type => String)
   slug: string;
 
-  @Field()
+  @Field({nullable: true})
   title: string;
 
   @Field(type => [Category], { nullable: true })

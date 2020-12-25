@@ -75,7 +75,7 @@ export default class Product {
   @Field()
   slug: string;
 
-  @Field()
+  @Field({nullable: true})
   title: string;
 
   @Field(() => ProductType)
@@ -84,10 +84,10 @@ export default class Product {
   @Field(() => [Category])
   categories: Category[];
 
-  @Field()
+  @Field({nullable: true})
   unit: string;
 
-  @Field()
+  @Field({nullable: true})
   weight: number;
 
   @Field()

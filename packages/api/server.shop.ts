@@ -9,6 +9,7 @@ import { OrderResolver } from './shop/services/order/order.resolver';
 import { CouponResolver } from './shop/services/coupon/coupon.resolver';
 import { CategoryResolver } from './shop/services/category/category.resolver';
 import { VendorResolver } from './shop/services/vendors/vendors.resolver';
+import { ListCategoryReSolver } from './shop/services/category/listcategory.resolver';
 const app: express.Application = express();
 const path = '/shop/graphql';
 const PORT = process.env.PORT || 4000;
@@ -22,6 +23,7 @@ const main = async () => {
       CouponResolver,
       CategoryResolver,
       VendorResolver,
+      ListCategoryReSolver,
     ],
   });
   const apolloServer = new ApolloServer({
