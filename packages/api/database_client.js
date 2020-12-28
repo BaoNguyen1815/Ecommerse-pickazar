@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 var db = {};
 
-const sequelize = new Sequelize('ecommerce', 'root', '', {
+const sequelize = new Sequelize('ecomerce', 'root', '', {
   host: 'localhost',
   port: '3306',
   dialect: 'mysql',
@@ -29,9 +29,8 @@ let models = [
   require('./shop/models/categories'),
   require('./shop/models/orders'),
   require('./shop/models/order_detail'),
-]
-
-
+  require('./shop/models/coupon'),
+];
 
 models.forEach((model) => {
   const seqModel = model(sequelize, Sequelize);

@@ -1,8 +1,8 @@
 import Coupon from '../services/coupon/coupon.type';
 import { plainToClass } from 'class-transformer';
 const db = require('../../database_client')
-const loadCoupons = (): Promise<Coupon[]> => {
-  return db.coupons.fillAll().then((coupons :[Coupon])=>{
+export function loadCoupons () : Promise<Coupon[]>  {
+  return db.coupons.findAll().then((coupons :[Coupon])=>{
     const cp = coupons.map((coupon:any)=>{
       return{
         id: coupon.id,

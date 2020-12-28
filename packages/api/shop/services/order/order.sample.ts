@@ -40,9 +40,10 @@ const loadOrders = () : Promise<Order[]>  =>{
                     return{
                         id: item.id,
                         title : item.title,
-                        weight: item.weight,
+                        weight: item.unit,
                         price: price,
                         image: item.image,
+                        // image:'http://s3.amazonaws.com/redqteam.com/headless-image/banana.jpg',
                         // details: item.order_details,
                         quantity: quantity,
                         total : total,
@@ -50,6 +51,7 @@ const loadOrders = () : Promise<Order[]>  =>{
                 })
             }
         });
+        console.log(result[0])
         return result;
     })
     return result_orders;

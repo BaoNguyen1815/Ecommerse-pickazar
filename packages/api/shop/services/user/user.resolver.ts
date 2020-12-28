@@ -1,5 +1,4 @@
 import { Resolver, Query, Arg, Int, Mutation } from 'type-graphql';
-
 import { filterItems } from '../../helpers/filter';
 import User from './user.type';
 import {loadUsers} from '../../data/user.sample';
@@ -7,21 +6,18 @@ import { any } from 'sequelize/types/lib/operators';
 const db = require('../../../database_client');
 @Resolver()
 export class UserResolver {
-  private readonly items: Promise<User[]> = loadUsers();
-
+  private readonly items: Promise<User[]> = loadUsers(); 
   @Query(() => User)
   async me(@Arg('id') id: string): Promise<User> {
     let items= await this.items;
     return await items[0];
   }
-
   @Mutation(() => User, { description: 'Update User' })
   async updateMe(@Arg('meInput') meInput: string): Promise<User> {
     console.log(meInput, 'meInput');
     let items= await this.items;
     const input = JSON.parse(meInput);
     const a =Object.assign({},input)
-  
     const user = await db.users.update(a,{
     where: {
       id: items[0].id
@@ -65,11 +61,10 @@ export class UserResolver {
       user_id: items[0].id,
     }
     const input = JSON.parse(contactInput);
-    console.log("input",input)
+    
     const add = Object.assign(a,input)
+    console.log(input,"aaa")
     if(input.id==null){
-      console.log(add.type,"add")
-      console.log(input,"input")
       await db.contact.create(add);
     }else{
       await db.contact.update(add,{
@@ -107,7 +102,6 @@ export class UserResolver {
     })
     return await items[0];
   }
-
   @Mutation(() => User, { description: 'Add Payment Card' })
   async addPaymentCard(@Arg('cardInput') cardInput: string): Promise<User> {
     console.log(cardInput, 'cardInput');

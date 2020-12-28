@@ -17,7 +17,7 @@ module.exports = function (sequelize: any, DataTypes: any) {
             field:"code",
         },
         discountInPercent:{
-            type: DataTypes.INT,
+            type: DataTypes.NUMBER,
             allowNull: true,
             field:"discount",
         },

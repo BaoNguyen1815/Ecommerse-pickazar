@@ -5,14 +5,14 @@ const db = require('../../database_client')
 export function loadUsers() : Promise<User[]>{
   return db.users.findAll({
     where:{
-      // id : "12",
+      // id : 12,
     },
     include:[{
       model:db.addresses,
-      // as:"address"
+      as:"address"
     },{
       model:db.contact,
-      // as :"contact"
+      as :"contact"
     }]
   }).then((users :[User])=>{
     const user = users.map((user)=>{
@@ -67,7 +67,6 @@ export function loadUsers() : Promise<User[]>{
                 ]
       }
     })
-    // console.log(user[0])
     return user;
   })
 }

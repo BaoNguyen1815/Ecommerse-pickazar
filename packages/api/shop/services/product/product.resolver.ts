@@ -7,7 +7,6 @@ import { filterItems, getRelatedItems } from '../../helpers/filter';
 @Resolver()
 export class ProductResolver {
   private readonly items:Promise<Product[]> = createProductSamples();
-
   @Query((returns) => Products)
   async products(
     @Arg('limit', (type) => Int, { defaultValue: 10 }) limit: number,
