@@ -10,10 +10,10 @@ export default class User {
 
   @Field()
   name: string;
-
   @Field()
   email: string;
-
+  @Field()
+  password: string;
   @Field(type => [Address])
   address: Address[];
 

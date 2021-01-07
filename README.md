@@ -41,7 +41,7 @@ We have used monorepo folder structure with Yarn Workspace. In our template we h
 
 # Getting Started & Installation
 
-For getting started with the template you have to follow the below procedure. First navigate to the `pickbazar` directory. Then run below command for getting started with specific part.
+For getting started with the template you have to follow the below procedure. First to the `pickbazar` directory. Then run below command for getting started with specific part.
 
 ```bash
 # on pickbazar directory
@@ -146,7 +146,7 @@ If you want to host the template in vercel.com then follow the below command
 
 ### API
 
-- Navigate to `packages/api`
+- to `packages/api`
 - Now run below command
 
 ```bash
@@ -164,7 +164,7 @@ vercel
 REACT_APP_API_URL={put_your_api_url_here}/admin/graphql;
 ```
 
-- Navigate to `packages/admin`
+- to `packages/admin`
 - Now run below command
 
 ```bash
@@ -181,7 +181,7 @@ NEXT_PUBLIC_STRIPE_PUBLIC_KEY= 'put_your_stripe_public_key'
 NEXT_PUBLIC_GRAPHQL_API_ENDPOINT= '{put_your_api_url_here.}/shop/graphql'
 ```
 
-- Navigate to `packages/shop`
+- to `packages/shop`
 - Now run below command
 
 ```

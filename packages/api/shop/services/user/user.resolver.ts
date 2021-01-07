@@ -10,9 +10,11 @@ export class UserResolver {
   private readonly items: Promise<User[]> = loadUsers();
 
   @Query(() => User)
-  async me(@Arg('id') id: string): Promise<User> {
+  async me(@Arg('userInput') userInput: string): Promise<User|undefined> {
+    console.log(userInput, 'userInput');
     let items= await this.items;
-    return await items[0];
+    const input = JSON.parse(userInput);
+    return await items.find((item) => item.email === input.email && item.password === input.password);
   }
 
   @Mutation(() => User, { description: 'Update User' })

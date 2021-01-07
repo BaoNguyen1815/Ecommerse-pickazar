@@ -1,11 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const GET_LOGGED_IN_CUSTOMER = gql`
-  query getUser($id: String = "12") {
-    me(id: $id) {
+  query getUser($userInput: String ) {
+    me(userInput: $userInput) {
       id
       name
       email
+      password
       address {
         id
         type

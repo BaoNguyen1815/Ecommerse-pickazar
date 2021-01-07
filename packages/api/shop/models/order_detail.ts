@@ -3,8 +3,10 @@ module.exports = function(sequelize: any, DataTypes : any){
         'order_details',{
             id:{
                 type: DataTypes.INTEGER,
-                allowNull : false,
-                primaryKey : true
+                allowNull: false,
+                primaryKey: true,
+                autoIncrement: true,
+                field:"id",
             },
             order_id:{
                 type : DataTypes.INTEGER,

@@ -16,6 +16,11 @@ module.exports = function (sequelize: any, DataTypes: any) {
             allowNull: true,
             field:"email",
         },
+        password:{
+            type: DataTypes.STRING,
+            allowNull: true,
+            field:"password",
+        },
     },{
         tableName: "users",
         freezeTableName: true,

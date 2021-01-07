@@ -9,10 +9,10 @@ export function loadUsers() : Promise<User[]>{
     },
     include:[{
       model:db.addresses,
-      // as:"address"
+      as:"address"
     },{
       model:db.contact,
-      // as :"contact"
+      as :"contact"
     }]
   }).then((users :[User])=>{
     const user = users.map((user)=>{
@@ -20,6 +20,7 @@ export function loadUsers() : Promise<User[]>{
         id: user.id,
         name:user.name,
         email: user.email,
+        password: user.password,
         address:user.address.map(add=>{
           return{
             id:add.id,

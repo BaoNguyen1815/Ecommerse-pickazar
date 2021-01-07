@@ -18,15 +18,15 @@ const loadOrders = () : Promise<Order[]>  =>{
         let result = orders.map((order : any)=>{
             // console.log(order);
             
-            const jsonAddress = JSON.parse(order.deliveryAddress);
-            const delivery_address = jsonAddress.address +", "+jsonAddress.city + ", " + jsonAddress.country;
+            // const jsonAddress = JSON.parse(order.deliveryAddress);
+            // const delivery_address = jsonAddress.address +", "+jsonAddress.city + ", " + jsonAddress.country;
             return {
                 id: order.id,
                 userId: order.userId,
                 deliveryTime : order.deliveryTime,
                 amount : order.amount,
                 date : order.date,
-                deliveryAddress: delivery_address,
+                deliveryAddress: order.deliveryAddress,
                 subtotal: order.subtotal,
                 discount: order.discount,
                 deliveryFee: order.deliveryFee,
@@ -41,10 +41,9 @@ const loadOrders = () : Promise<Order[]>  =>{
                         id: item.id,
                         title : item.title,
                         weight: item.weight,
-                        price: price,
+                        price: item.price,
                         image: item.image,
-                        // details: item.order_details,
-                        quantity: quantity,
+                        quantity: item.order_details.quantity,
                         total : total,
                     }
                 })
