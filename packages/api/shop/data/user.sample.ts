@@ -68,7 +68,7 @@ export function loadUsers() : Promise<User[]>{
                 ]
       }
     })
-    // console.log(user[0])
+    console.log(user)
     return user;
   })
 }

@@ -3,6 +3,7 @@ import loadOrders from './order.sample';
 import Order from './order.type';
 import { filterOrder } from '../../helpers/filter';
 import { take } from 'lodash';
+import console from 'console';
 const db = require('../../../database_client');
 @Resolver()
 export class OrderResolver {
@@ -15,6 +16,7 @@ export class OrderResolver {
     @Arg('limit', type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Order[]> {
     let items = await this.items;
+    console.log(items)
     // console.log(items);
     // let userid = 17
     // return await take(this.items.filter(item => item.userId === user), limit);

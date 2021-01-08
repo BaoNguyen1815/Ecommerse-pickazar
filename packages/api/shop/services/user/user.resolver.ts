@@ -1,5 +1,4 @@
 import { Resolver, Query, Arg, Int, Mutation } from 'type-graphql';
-
 import { filterItems } from '../../helpers/filter';
 import User from './user.type';
 import {loadUsers} from '../../data/user.sample';
@@ -7,16 +6,24 @@ import { any } from 'sequelize/types/lib/operators';
 const db = require('../../../database_client');
 @Resolver()
 export class UserResolver {
+  // @Mutation(() => User, { description: 'Update User' })
+  // async signUp(@Arg('userInput') userInput: string): Promise<User> {
+  //   let items= await this.items;
+  //   const input = JSON.parse(userInput);
+  //   console.log(input, 'input')
+  //   await db.users.create(input)
+  //   return await items[0];
+  // }
   private readonly items: Promise<User[]> = loadUsers();
-
   @Query(() => User)
   async me(@Arg('userInput') userInput: string): Promise<User|undefined> {
-    console.log(userInput, 'userInput');
+    // console.log(userInput, 'userInput');
     let items= await this.items;
     const input = JSON.parse(userInput);
+    console.log(input)
     return await items.find((item) => item.email === input.email && item.password === input.password);
   }
-
+  
   @Mutation(() => User, { description: 'Update User' })
   async updateMe(@Arg('meInput') meInput: string): Promise<User> {
     console.log(meInput, 'meInput');

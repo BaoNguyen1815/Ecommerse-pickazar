@@ -23,7 +23,7 @@ export default class OrderProduct {
   @Field()
   price: number;
 
-  @Field()
+  @Field({nullable : true})
   weight: string;
 
   @Field()

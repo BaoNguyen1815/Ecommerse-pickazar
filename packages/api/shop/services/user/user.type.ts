@@ -7,19 +7,18 @@ import Card from './card.type';
 export default class User {
   @Field(type => Int)
   id: number;
-
-  @Field()
+  @Field({nullable : true})
   name: string;
   @Field()
   email: string;
   @Field()
   password: string;
-  @Field(type => [Address])
+  @Field(type => [Address],{nullable : true})
   address: Address[];
 
-  @Field(type => [Contact])
+  @Field(type => [Contact],{nullable : true})
   contact: Contact[];
 
-  @Field(type => [Card])
+  @Field(type => [Card],{nullable : true})
   card: Card[];
 }

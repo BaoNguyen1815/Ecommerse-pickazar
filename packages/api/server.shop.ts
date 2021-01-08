@@ -3,6 +3,7 @@ import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { UserResolver } from './shop/services/user/user.resolver';
+import {SignUpResolver} from './shop/services/signUp/signUp.resolver';
 import { ProductResolver } from './shop/services/product/product.resolver';
 import { PaymentResolver } from './shop/services/payment/payment.resolver';
 import { OrderResolver } from './shop/services/order/order.resolver';
@@ -17,6 +18,7 @@ const main = async () => {
   const schema = await buildSchema({
     resolvers: [
       UserResolver,
+      SignUpResolver,
       ProductResolver,
       PaymentResolver,
       OrderResolver,

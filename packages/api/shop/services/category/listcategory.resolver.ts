@@ -1,9 +1,6 @@
 import { Arg, Query, Resolver } from "type-graphql";
 import ListCategory from "../../../admin/services/category/category1.type";
 import loadListCategories from "./listcategory.sample";
-
-
-
 @Resolver()
 export  class ListCategoryReSolver{
     private readonly items: Promise<ListCategory[]> = loadListCategories();

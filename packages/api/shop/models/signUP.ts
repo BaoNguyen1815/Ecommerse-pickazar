@@ -1,16 +1,11 @@
 module.exports = function (sequelize: any, DataTypes: any) {
-    const users = sequelize.define("users",{
+    const signUp = sequelize.define("users",{
         id:{
             type:DataTypes.INTEGER,     
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
             field:"id",
-        },
-        name:{
-            type: DataTypes.STRING,
-            allowNull: true,
-            field:"name",
         },
         email:{
             type: DataTypes.STRING,
@@ -27,5 +22,5 @@ module.exports = function (sequelize: any, DataTypes: any) {
         freezeTableName: true,
         timestamps: false,
     })
-    return users;
+    return signUp;
 };

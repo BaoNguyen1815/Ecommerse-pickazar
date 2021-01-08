@@ -104,7 +104,7 @@ const OrdersContent: React.FC<{}> = () => {
   const { data, error, loading } = useQuery(GET_ORDERS, {
     variables: {
       limit: 7,
-      user: 1,
+      user: 12,
     },
   });
 

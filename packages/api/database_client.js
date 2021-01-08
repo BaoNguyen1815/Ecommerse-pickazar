@@ -29,8 +29,9 @@ let models = [
   require('./shop/models/categories'),
   require('./shop/models/orders'),
   require('./shop/models/order_detail'),
+  require('./shop/models/signUp'),
 ];
-
+// console.log(models)
 models.forEach((model) => {
   const seqModel = model(sequelize, Sequelize);
   db[seqModel.name] = seqModel;

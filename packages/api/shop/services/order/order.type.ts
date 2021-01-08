@@ -5,31 +5,31 @@ import OrderProduct from './orderProduct.type';
 
 @ObjectType()
 export default class Order {
-  @Field()
+  @Field({nullable : true})
   id: number;
 
-  @Field()
+  @Field({nullable : true})
   userId: number;
 
-  @Field(type => [OrderProduct])
+  @Field(type => [OrderProduct],{nullable : true})
   products: OrderProduct[];
   
   // @Field(type=> [OrderDetail])
   // detail: OrderDetail;
 
-  @Field(type => String)
+  @Field(type => String,{nullable : true})
   status: number;
 
-  @Field(type => String)
+  @Field(type => String,{nullable : true})
   deliveryTime: string;
 
-  @Field(type => String)
+  @Field(type => String,{nullable : true})
   amount: number;
 
   @Field(type => String,{nullable : true})
   subtotal: number;
 
-  @Field(type => String)
+  @Field(type => String,{nullable : true})
   discount: number;
 
   @Field(type => String,{nullable : true})
